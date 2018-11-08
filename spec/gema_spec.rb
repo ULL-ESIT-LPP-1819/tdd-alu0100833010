@@ -48,6 +48,10 @@ RSpec.describe Gema do
       it "Cálculo del valor energético en kJ/g" do
         expect(@lata_de_atun.valor_kJ).to eq((23.0*37)+(0.5*17)+(20.0*17)+(0.40*25))
       end
+
+      it "Cálculo del valor energético en kcal/g" do
+        expect(@lata_de_atun.valor_kcal).to eq((23.0*9)+(0.5*4)+(20.0*4)+(0.40*6))
+      end
     end
   end
 end
