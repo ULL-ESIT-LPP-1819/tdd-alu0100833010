@@ -24,4 +24,8 @@ class Etiqueta
   def hidratos_IR
     (@hidratos*100)/260
   end
+
+  def azucar_IR
+    (@azucares*100)/90
+  end
 end
