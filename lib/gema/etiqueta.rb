@@ -32,4 +32,8 @@ class Etiqueta
   def proteinas_IR
     (@proteinas*100)/50
   end
+
+  def sal_IR
+    (@sal*100)/6
+  end
 end
