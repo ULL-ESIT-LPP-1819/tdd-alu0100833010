@@ -36,4 +36,8 @@ class Etiqueta
   def sal_IR
     (@sal*100)/6
   end
+
+  def to_s
+    "[#{@nombre}, Grasas=#{@grasas}, Saturadas=#{@grasas_saturadas}, Hidratos=#{@hidratos}, Azúcares=#{@azucares}, Proteínas=#{@proteinas}, Sal=#{@sal}]:"
+  end
 end
