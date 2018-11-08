@@ -12,4 +12,8 @@ class Etiqueta
   def valor_kcal
     (@grasas*9)+(@hidratos*4)+(@proteinas*4)+(@sal*6)
   end
+
+  def grasa_IR
+    (@grasas*100)/70
+  end
 end
