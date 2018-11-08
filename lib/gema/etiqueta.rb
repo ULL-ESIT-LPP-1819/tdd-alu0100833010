@@ -16,4 +16,8 @@ class Etiqueta
   def grasa_IR
     (@grasas*100)/70
   end
+
+  def grasa_saturada_IR
+    (@grasas_saturadas*100)/20
+  end
 end
