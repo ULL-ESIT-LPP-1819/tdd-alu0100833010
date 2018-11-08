@@ -78,7 +78,12 @@ RSpec.describe Gema do
       it "Ingesta recomendada para la sal" do
         expect(@lata_de_atun.sal_IR).to eq((0.40*100)/6)
       end
+    end
 
+    context "Etiqueta formateada" do
+      it "Existe un método para obtener la etiqueta formateada" do
+        expect(@lata_de_atun.to_s).to eq("[#{@lata_de_atun.nombre}, Grasas=#{@lata_de_atun.grasas}, Saturadas=#{@lata_de_atun.grasas_saturadas}, Hidratos=#{@lata_de_atun.hidratos}, Azúcares=#{@lata_de_atun.azucares}, Proteínas=#{@lata_de_atun.proteinas}, Sal=#{@lata_de_atun.sal}]:")
+      end
     end
   end
 end
