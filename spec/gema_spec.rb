@@ -11,7 +11,7 @@ RSpec.describe Gema do
 
   describe Etiqueta do
     before :all do
-      @lata_de_atun = Etiqueta.new("Lata de atún", 23.0, 2.7, 0.5)
+      @lata_de_atun = Etiqueta.new("Lata de atún", 23.0, 2.7, 0.5, 0.5)
     end
 
     context "Expectativas iniciales" do
@@ -29,6 +29,10 @@ RSpec.describe Gema do
 
       it "Existe la cantidad de hidratos de carbono" do
         expect(@lata_de_atun.hidratos).to eq(0.5)
+      end
+
+      it "Existe la cantidad de azúcares" do
+        expect(@lata_de_atun.azucares).to eq(0.5)
       end
     end
   end
