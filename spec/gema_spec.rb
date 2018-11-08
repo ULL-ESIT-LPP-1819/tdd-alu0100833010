@@ -67,6 +67,10 @@ RSpec.describe Gema do
         expect(@lata_de_atun.hidratos_IR).to eq((0.5*100)/260)
       end
 
+      it "Ingesta recomendada para los azúcares" do
+        expect(@lata_de_atun.azucar_IR).to eq((0.5*100)/90)
+      end
+
     end
   end
 end
