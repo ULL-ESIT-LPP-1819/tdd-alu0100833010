@@ -53,5 +53,11 @@ RSpec.describe Gema do
         expect(@lata_de_atun.valor_kcal).to eq((23.0*9)+(0.5*4)+(20.0*4)+(0.40*6))
       end
     end
+
+    context "Cálculo de la Ingesta Recomendada" do
+      it "Ingesta recomendada para la grasa total" do
+        expect(@lata_de_atun.grasa_IR).to eq((23*100)/70)
+      end
+    end
   end
 end
