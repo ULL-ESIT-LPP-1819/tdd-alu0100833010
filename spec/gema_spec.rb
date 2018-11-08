@@ -58,6 +58,10 @@ RSpec.describe Gema do
       it "Ingesta recomendada para la grasa total" do
         expect(@lata_de_atun.grasa_IR).to eq((23.0*100)/70)
       end
+
+      it "Ingesta recomendada para las grasas saturadas" do
+        expect(@lata_de_atun.grasa_saturada_IR).to eq((2.7*100)/20)
+      end
     end
   end
 end
