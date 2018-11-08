@@ -20,4 +20,8 @@ class Etiqueta
   def grasa_saturada_IR
     (@grasas_saturadas*100)/20
   end
+
+  def hidratos_IR
+    (@hidratos*100)/260
+  end
 end
