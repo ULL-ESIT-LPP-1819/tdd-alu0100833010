@@ -28,4 +28,8 @@ class Etiqueta
   def azucar_IR
     (@azucares*100)/90
   end
+
+  def proteinas_IR
+    (@proteinas*100)/50
+  end
 end
