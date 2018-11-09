@@ -1,8 +1,8 @@
 class Etiqueta
   attr_reader :nombre, :grasas, :grasas_saturadas, :hidratos, :azucares, :proteinas, :sal
 
-  def initialize(nombre, grasas, grasas_saturadas, hidratos, azucares, proteinas, sal)
-    @nombre, @grasas, @grasas_saturadas, @hidratos, @azucares, @proteinas, @sal = nombre, grasas, grasas_saturadas, hidratos, azucares, proteinas, sal
+  def initialize(nombre, grasas, grasas_saturadas, hidratos, azucares, proteinas, sal, porcion)
+    @nombre, @grasas, @grasas_saturadas, @hidratos, @azucares, @proteinas, @sal, @porcion = nombre, grasas, grasas_saturadas, hidratos, azucares, proteinas, sal, porcion
   end
 
   def valor_kJ
@@ -39,5 +39,9 @@ class Etiqueta
 
   def to_s
     "[#{@nombre}, Grasas=#{@grasas}, Saturadas=#{@grasas_saturadas}, Hidratos=#{@hidratos}, Azúcares=#{@azucares}, Proteínas=#{@proteinas}, Sal=#{@sal}]:"
+  end
+
+  def porcion
+    (@grasas*30)/100     
   end
 end
