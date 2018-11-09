@@ -11,7 +11,8 @@ RSpec.describe Gema do
 
   describe Etiqueta do
     before :all do
-      @lata_de_atun = Etiqueta.new("Lata de atún", 23.0, 2.7, 0.5, 0.5, 20.0, 0.40)
+      @lata_de_atun = Etiqueta.new("Lata de atún", 23.0, 2.7, 0.5, 0.5, 20.0, 0.40, [0])
+      @cereales = Etiqueta.new("Cereales", 0.8, 0.2, 82.0, 7.0, 8.0, 1.6, [0.24]) 
     end
 
     context "Expectativas iniciales" do
@@ -83,6 +84,12 @@ RSpec.describe Gema do
     context "Etiqueta formateada" do
       it "Existe un método para obtener la etiqueta formateada" do
         expect(@lata_de_atun.to_s).to eq("[#{@lata_de_atun.nombre}, Grasas=#{@lata_de_atun.grasas}, Saturadas=#{@lata_de_atun.grasas_saturadas}, Hidratos=#{@lata_de_atun.hidratos}, Azúcares=#{@lata_de_atun.azucares}, Proteínas=#{@lata_de_atun.proteinas}, Sal=#{@lata_de_atun.sal}]:")
+      end
+    end
+
+    context "Cálculo de expectativas iniciales por porción" do
+      it "Gramos por porción para las grasas" do
+        expect(@cereales.porcion).to eq(0.24)
       end
     end
   end
