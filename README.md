@@ -2,7 +2,11 @@
 
 Welcome to your new gem! In this directory, you'll find the files you need to be able to package up your Ruby library into a gem. Put your Ruby code in the file `lib/gema`. To experiment with that code, run `bin/console` for an interactive prompt.
 
+<<<<<<< HEAD
 Práctica 6. Lenguajes y Paradigmas de programación. Desarrollo de la práctica haciendo uso de TDD.
+=======
+Práctica 6. Lenguajes y paradigmas de programación. Desarrollo del código haciendo uso de TDD.
+>>>>>>> desarrollo
 
 ## Installation
 
@@ -22,7 +26,11 @@ Or install it yourself as:
 
 ## Usage
 
+<<<<<<< HEAD
 Ejecutar el comando rake.
+=======
+Para ejecutar la práctica es necesario de hacer uso del comando rake.
+>>>>>>> desarrollo
 
 ## Development
 
