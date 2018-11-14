@@ -36,4 +36,23 @@ class Lista
       @size += 1
     end
   end
+
+  def extraer_head()
+    if (@size == 0)
+      puts "Lista vacía. No hay nodos para extraer."
+    elsif (@size == 1)
+      elemento = Node.new(@head.value, nil, nil)
+      @tail = Node.new(nil, nil, nil)
+      @head = Node.new(nil,nil, nil)
+      @size -= 1
+      return elemento.value
+    elsif (@size > 1)
+      elemento = Node.new(@head.value, nil, nil)
+      @head.next.prev = nil
+      @head = @tail.next
+      @size -= 1
+      return elemento.value
+    end
+  end
+
 end
