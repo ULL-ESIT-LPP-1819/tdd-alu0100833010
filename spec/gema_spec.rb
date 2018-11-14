@@ -99,11 +99,34 @@ RSpec.describe Gema do
       @lista = Lista.new()
     end
       
-    context "Listas" do
+    context "Expectativas iniciales" do
       it "Existe una lista vacía" do
 	expect(@lista.empty).to eq(true)
       end
-    end
 
+      it "Existe un valor para head nulo" do
+        expect(@lista.head.value).to eq(nil)
+      end
+
+      it "Existe un valor para tail nulo" do
+        expect(@lista.tail.value).to eq(nil)
+      end
+
+      it "Existe un tamaño para la lista igual a 0" do
+        expect(@lista.size).to eq(0)
+      end
+    end
+    
+    context "Insertando elementos" do
+      it "Existen los nodos prev y next vacíos" do
+        expect(@lista.head.next).to eq(nil)
+        expect(@lista.tail.prev).to eq(nil)
+      end
+
+      it "Existe un método para insertar elementos" do
+        @lista.insertar_tail(@lata_de_atun)
+        expect(@lista.size).to eq(1)
+      end
+    end
   end
 end
