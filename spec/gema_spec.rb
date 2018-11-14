@@ -93,4 +93,17 @@ RSpec.describe Gema do
       end
     end
   end
+
+  describe Lista do
+    before :all do
+      @lista = Lista.new()
+    end
+      
+    context "Listas" do
+      it "Existe una lista vacía" do
+	expect(@lista.empty).to eq(true)
+      end
+    end
+
+  end
 end
