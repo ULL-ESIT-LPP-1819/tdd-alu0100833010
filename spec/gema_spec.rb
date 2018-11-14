@@ -127,6 +127,16 @@ RSpec.describe Gema do
         @lista.insertar_tail(@lata_de_atun)
         expect(@lista.size).to eq(1)
       end
+
+      it "Ya no existe una lista vacía" do
+        expect(@lista.empty).to eq(false)
+      end
+    end
+  
+    context "Extrayendo elementos" do
+      it "Existe un método para extraer elementos" do
+        expect(@lista.extraer_head()).to eq(@lata_de_atun)
+      end
     end
   end
 end
