@@ -1,5 +1,6 @@
 require "spec_helper"
 
+
 RSpec.describe Gema do
   it "has a version number" do
     expect(Gema::VERSION).not_to be nil
@@ -97,6 +98,13 @@ RSpec.describe Gema do
   describe Lista do
     before :all do
       @lista = Lista.new()
+      @lata_de_atun = Etiqueta.new("Lata de atún", 23.0, 2.7, 0.5, 0.5, 20.0, 0.40, [0])
+      @cereales = Etiqueta.new("Cereales", 0.8, 0.2, 82.0, 7.0, 8.0, 1.6, [0.24])
+      @chocolatina = Etiqueta.new("Chocolatina", 23.0, 2.1, 81.1, 6.0, 9.0, 1.2, [0])
+      @lentejas = Etiqueta.new("Lentejas", 23.5, 52.0, 1.4, 0, 2.0, 0.2, [0])
+      @tomate_frito = Etiqueta.new("Tomate frito", 1.0, 3.5, 0.2, 3.0, 3.4, 4.7, [0])
+      @aceite = Etiqueta.new("Aceite", 0.0, 0.2, 90.1, 3.4, 5.2, 1.5, [0])
+      @leche = Etiqueta.new("Leche", 3.3, 4.8, 3.2, 0.0, 1.0, 4.3, [0])
     end
       
     context "Expectativas iniciales" do
@@ -124,8 +132,13 @@ RSpec.describe Gema do
       end
 
       it "Existe un método para insertar elementos" do
-        @lista.insertar_tail(@lata_de_atun)
-        expect(@lista.size).to eq(1)
+        expect(@lista.push_elemento(@lata_de_atun)).to eq(@lata_de_atun)
+        expect(@lista.push_elemento(@cereales)).to eq(@cereales)
+        expect(@lista.push_elemento(@chocolatina)).to eq(@chocolatina)
+        expect(@lista.push_elemento(@lentejas)).to eq(@lentejas)
+        expect(@lista.push_elemento(@tomate_frito)).to eq(@tomate_frito)
+        expect(@lista.push_elemento(@aceite)).to eq(@aceite)
+        expect(@lista.push_elemento(@leche)).to eq(@leche)
       end
 
       it "Ya no existe una lista vacía" do
@@ -136,7 +149,20 @@ RSpec.describe Gema do
     context "Extrayendo elementos" do
       it "Existe un método para extraer elementos" do
         expect(@lista.extraer_head()).to eq(@lata_de_atun)
+        @lista.insertar_tail(@lata_de_atun)
       end
     end
+
+    context "Clasificación según los gramos de sal" do
+      it "Accediendo a los gramos de sal" do
+        expect(@lista.extraer_head.sal).to eq(@lata_de_atun.sal)
+      end
+
+      it "Comprobar que los gramos de sal son recomendables" do
+        @elemento1 = @lista.extraer_head
+        expect(@elemento1.sal).to be <= 6
+      end
+    end
+
   end
 end
