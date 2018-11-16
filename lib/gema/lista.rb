@@ -37,6 +37,16 @@ class Lista
   def pop_elemento()
     if (@size == 0)
       puts "Lista vacía. No hay nodos para extraer."
+    elsif (@size == 1) 
+      elemento = @head
+      valor = @head.value
+      @head = nil
+      @head = @tail
+      @value = nil
+      elemento.next = nil
+      elemento.prev = nil
+      @size -= 1
+      return valor
     else
       elemento = @head
       valor = @head.value
