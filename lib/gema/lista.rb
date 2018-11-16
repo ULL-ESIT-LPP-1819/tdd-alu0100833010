@@ -17,23 +17,20 @@ class Lista
     end
   end
 
-  def insertar_tail(valor)
-    elemento = Node.new(valor, @head, nil)
+  def push_elemento(valor)
     if (@size == 0)
-      @tail = Node.new(valor, nil, nil)
-      @head = @tail
-      @size += 1
-    elsif (@size == 1)
+      elemento = Node.new(valor, nil, nil)
       @tail = elemento
-      @head.next = @tail
-      @tail.prev = @head
+      @head = elemento
       @size += 1
-    elsif (@size > 1)
-      aux = Node.new(@tail.value, @tail.next, elemento)
-      aux.prev.next = aux
+      return @tail.value
+    else
+      elemento = Node.new(valor, nil, @tail)
+      @tail.next = elemento
+      elemento.prev = @tail
       @tail = elemento
-      @tail.next.prev = @tail
       @size += 1
+      return @tail.value
     end
   end
 
