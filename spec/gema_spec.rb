@@ -143,26 +143,32 @@ RSpec.describe Gema do
 
       it "Ya no existe una lista vacía" do
         expect(@lista.empty).to eq(false)
+      end 
+ 
+      it "Head es el primer elemento insertado" do
+        expect(@lista.head.value).to eq(@lata_de_atun)
+      end
+
+      it "Tail es el ultimo elemento insertado" do
+        expect(@lista.tail.value).to eq(@leche)
       end
     end
-  
     context "Extrayendo elementos" do
       it "Existe un método para extraer elementos" do
-        expect(@lista.extraer_head()).to eq(@lata_de_atun)
-        @lista.insertar_tail(@lata_de_atun)
+        expect(@lista.pop_elemento()).to eq(@lata_de_atun)
       end
     end
 
-    context "Clasificación según los gramos de sal" do
-      it "Accediendo a los gramos de sal" do
-        expect(@lista.extraer_head.sal).to eq(@lata_de_atun.sal)
-      end
+#    context "Clasificación según los gramos de sal" do
+#      it "Accediendo a los gramos de sal" do
+#        expect(@lista.extraer_head.sal).to eq(@lata_de_atun.sal)
+#      end
 
-      it "Comprobar que los gramos de sal son recomendables" do
-        @elemento1 = @lista.extraer_head
-        expect(@elemento1.sal).to be <= 6
-      end
-    end
+#      it "Comprobar que los gramos de sal son recomendables" do
+#        @elemento1 = @lista.extraer_head
+#        expect(@elemento1.sal).to be <= 6
+#      end
+#    end
 
   end
 end
