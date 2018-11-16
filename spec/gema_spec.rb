@@ -159,16 +159,22 @@ RSpec.describe Gema do
       end
     end
 
-#    context "Clasificación según los gramos de sal" do
-#      it "Accediendo a los gramos de sal" do
-#        expect(@lista.extraer_head.sal).to eq(@lata_de_atun.sal)
-#      end
+    context "Clasificación según los gramos de sal" do
+      it "Accediendo a los gramos de sal" do
+        expect(@lista.pop_elemento().sal).to eq(@cereales.sal)
+      end
 
-#      it "Comprobar que los gramos de sal son recomendables" do
-#        @elemento1 = @lista.extraer_head
-#        expect(@elemento1.sal).to be <= 6
-#      end
-#    end
+      it "Comprobar que los gramos de sal son recomendables" do
+        @elemento1 = @lista.pop_elemento()
+        expect(@elemento1.sal).to be <= 6
+        @elemento2 = @lista.pop_elemento()
+        expect(@elemento2.sal).to be <= 6
+        @elemento3 = @lista.pop_elemento()
+        expect(@elemento3.sal).to be <= 6
+        @elemento4 = @lista.pop_elemento()
+        expect(@elemento4.sal).to be <= 6
+      end
+    end
 
   end
 end
