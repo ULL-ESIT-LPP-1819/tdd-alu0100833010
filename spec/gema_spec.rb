@@ -109,7 +109,7 @@ RSpec.describe Gema do
       
     context "Expectativas iniciales" do
       it "Existe una lista vacía" do
-	expect(@lista.empty).to eq(true)
+	expect(@lista.empty?).to eq(true)
       end
 
       it "Existe un valor para head nulo" do
@@ -142,7 +142,7 @@ RSpec.describe Gema do
       end
 
       it "Ya no existe una lista vacía" do
-        expect(@lista.empty).to eq(false)
+        expect(@lista.empty?).to eq(false)
       end 
  
       it "Head es el primer elemento insertado" do

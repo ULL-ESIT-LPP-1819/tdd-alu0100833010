@@ -9,7 +9,7 @@ class Lista
     @size = 0
   end
  
-  def empty()
+  def empty?()
     if (@size == 0)
       return true
     else
