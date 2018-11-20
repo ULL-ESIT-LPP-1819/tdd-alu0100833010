@@ -32,6 +32,12 @@ RSpec.describe Individuo do
     before :each do
       @individuo1 = Paciente.new(1, "Sara", "Pérez", 23, 0, "17/08/1995", "Estudiante", "No", 60.0, 1.64, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
     end
+
+    context "Expectativas iniciales" do   
+      it "Existe un método para obtener el IMC del individuo" do
+        expect(@individuo1.imc).to eq(60.0/(1.64*1.64))
+      end
+    end
   end
 
 end

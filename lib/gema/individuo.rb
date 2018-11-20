@@ -13,8 +13,12 @@ end
 class Paciente < Individuo
   attr_accessor :peso, :talla
 
-  def initialize (n_historia, nombre, apellido, edad, sexo, nacimiento, ocupacion, fumador, peso, talla, cintura, cadera, tripital, bicipital, subescapular, suprailiaco)
+  def initialize (n_historia, nombre, apellido, edad, sexo, nacimiento, ocupacion, fumador, peso, talla, cintura, cadera, tricipital, bicipital, subescapular, suprailiaco)
     super(n_historia, nombre, apellido, edad, sexo, nacimiento, ocupacion, fumador)
     @peso, @talla, @cintura, @cadera, @tricipital, @bicipital, @subescapular, @suprailiaco = peso, talla, cintura, cadera, tricipital, bicipital, subescapular, suprailiaco
   end
+ 
+#  def imc 
+#    @peso/(@talla*@talla)
+#  end
 end
