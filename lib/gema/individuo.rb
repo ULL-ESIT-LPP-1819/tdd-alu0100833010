@@ -9,3 +9,12 @@ class Individuo
     "[Número de historia=#{@n_historia}, Nombre=#{@nombre}, Apellido=#{@apellido}, Edad=#{@edad}, Sexo=#{@sexo}, Nacimiento=#{@nacimiento}, Ocupación=#{@ocupacion}, Fumador=#{@fumador}]:"
   end
 end
+
+class Paciente < Individuo
+  attr_accessor :peso, :talla
+
+  def initialize (n_historia, nombre, apellido, edad, sexo, nacimiento, ocupacion, fumador, peso, talla, cintura, cadera, tripital, bicipital, subescapular, suprailiaco)
+    super(n_historia, nombre, apellido, edad, sexo, nacimiento, ocupacion, fumador)
+    @peso, @talla, @cintura, @cadera, @tricipital, @bicipital, @subescapular, @suprailiaco = peso, talla, cintura, cadera, tricipital, bicipital, subescapular, suprailiaco
+  end
+end
