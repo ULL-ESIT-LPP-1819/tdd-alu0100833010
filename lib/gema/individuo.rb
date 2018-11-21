@@ -25,4 +25,16 @@ class Paciente < Individuo
   def masa
     1.2 * imc + 0.23 * @edad - 10.8 * @sexo - 5.4
   end
+
+  def cintura
+    (@cintura[0]+@cintura[1])/2
+  end
+
+  def cadera
+    (@cadera[0]+@cadera[1])/2
+  end
+
+  def rcc
+    cintura/cadera
+  end
 end
