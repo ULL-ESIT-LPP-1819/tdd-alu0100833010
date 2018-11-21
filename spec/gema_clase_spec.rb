@@ -45,6 +45,13 @@ RSpec.describe Individuo do
       it "Existe un método para obtener la RCC" do
         expect(@individuo1.rcc).to eq(((67.6+68.1)/2)/((93.6+94.1)/2))
       end
+      
+      it "Existe un método para calcular el valor bicipital, tricipital, subescapular y suprailiaco" do
+        expect(@individuo1.bicipital).to eq((1.2+2.2+1.3)/3)
+        expect(@individuo1.tricipital).to eq((1.8+1.1+1.6)/3)
+        expect(@individuo1.subescapular).to eq((1.1+2.9+1.3)/3)
+        expect(@individuo1.suprailiaco).to eq((1.3+2.9+2.4)/3)
+      end
     end
   end
 
