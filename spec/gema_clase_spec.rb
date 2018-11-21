@@ -79,20 +79,42 @@ RSpec.describe Individuo do
   end
   describe Lista do
     before :each do
-      @lista = Lista.new()
+      @lista_p = Lista.new()
       @individuo1 = Paciente.new(1, "Sara", "Pérez", 23, 0, "17/08/1995", "Estudiante", "No", 60.0, 1.64, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
       @individuo2 = Paciente.new(2, "María", "García", 33, 0, "13/01/1985", "Profesora", "Si", 110, 1.67, [83.4,83.8], [105.1,105.6], [1.5,2.8,1.9], [1.6,1.2,1.9], [1.1,2.9,1.3], [1.6,2.2,2.2])
       @individuo3 = Paciente.new(3, "Juan", "Castro", 53, 1, "04/10/1965", "Ingeniero", "No", 83, 1.78, [68.7,69.0], [71.5,71.3], [1.4,2.6,1.7], [1.8,1.1,1.6], [2.4,1.1,2.6], [2.2,1.8,1.3])
       @individuo4 = Paciente.new(4, "Lorena", "Rodríguez", 22, 0, "12/05/1996", "Estudiante", "Si", 47, 1.61, [60.0,60.9], [90.0,90.5], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
       @individuo5 = Paciente.new(5, "Carlos", "Coello", 13, 1, "15/06/2005", "Estudiante", "No", 58, 1.68, [60.0,60.9], [90.0,90.5], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
     end
-   
-    it "Existe un método para insertar los pacientes en la lista" do
-      expect(@lista.push_elemento(@individuo1)).to eq(@individuo1)
-      expect(@lista.push_elemento(@individuo2)).to eq(@individuo2)
-      expect(@lista.push_elemento(@individuo3)).to eq(@individuo3)
-      expect(@lista.push_elemento(@individuo4)).to eq(@individuo4)
-      expect(@lista.push_elemento(@individuo5)).to eq(@individuo5)
+    
+    it "Existe una lista vacía" do
+      expect(@lista_p.empty?).to eq(true)
+    end
+
+    it "Existe un valor para head nulo" do
+      expect(@lista_p.head.value).to eq(nil)
+    end
+
+    it "Existe un valor para tail nulo" do
+      expect(@lista_p.tail.value).to eq(nil)
+    end
+
+    it "Existe un tamaño para la lista igual a 0" do
+      expect(@lista_p.size).to eq(0)
+    end   
+    
+    context "Insertando elementos" do
+      it "Existen los nodos prev y next vacíos" do
+        expect(@lista_p.head.next).to eq(nil)
+        expect(@lista_p.tail.prev).to eq(nil)
+      end
+      
+      it "Existe un método para insertar elementos" do
+        expect(@lista_p.push_elemento(@individuo2)).to eq(@individuo2)
+      end
+      it "Ya no existe una lista vacía" do
+        expect(@lista_p.empty?).to eq(false)
+      end 
     end
   end
 end
