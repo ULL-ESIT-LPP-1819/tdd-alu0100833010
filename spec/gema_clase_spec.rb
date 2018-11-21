@@ -41,6 +41,10 @@ RSpec.describe Individuo do
       it "Existe un método para obtener el % de masa corporal" do
         expect(@individuo1.masa).to eq(1.2*@individuo1.imc+0.23*23-10.8*0-5.4)
       end
+      
+      it "Existe un método para obtener la RCC" do
+        expect(@individuo1.rcc).to eq(((67.6+68.1)/2)/((93.6+94.1)/2))
+      end
     end
   end
 
