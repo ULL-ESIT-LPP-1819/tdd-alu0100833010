@@ -37,4 +37,24 @@ class Paciente < Individuo
   def rcc
     cintura/cadera
   end
+
+  def tricipital
+    (@tricipital[0]+@tricipital[1]+@tricipital[2])/3
+  end
+
+  def bicipital
+    (@bicipital[0]+@bicipital[1]+@bicipital[2])/3
+  end
+
+  def subescapular
+    (@subescapular[0]+@subescapular[1]+@subescapular[2])/3
+  end
+
+  def suprailiaco
+    (@suprailiaco[0]+@suprailiaco[1]+@suprailiaco[2])/3
+  end
+ 
+  def to_s
+    "[Peso=#{@peso}, Talla=#{@talla}, IMC=#{imc}, %MC=#{masa}, RCC=#{rcc}, Pliegues=#{tricipital},#{bicipital},#{subescapular},#{suprailiaco}]:"
+  end  
 end

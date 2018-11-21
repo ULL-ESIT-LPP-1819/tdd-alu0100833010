@@ -47,10 +47,33 @@ RSpec.describe Individuo do
       end
       
       it "Existe un método para calcular el valor bicipital, tricipital, subescapular y suprailiaco" do
-        expect(@individuo1.bicipital).to eq((1.2+2.2+1.3)/3)
-        expect(@individuo1.tricipital).to eq((1.8+1.1+1.6)/3)
-        expect(@individuo1.subescapular).to eq((1.1+2.9+1.3)/3)
-        expect(@individuo1.suprailiaco).to eq((1.3+2.9+2.4)/3)
+        expect(@individuo1.tricipital).to eq((1.2+2.2+1.3)/3)
+        expect(@individuo1.bicipital).to eq((1.1+1.9+1.3)/3)
+        expect(@individuo1.subescapular).to eq((1.4+2.1+1.6)/3)
+        expect(@individuo1.suprailiaco).to eq((1.2+2.8+2.3)/3)
+      end
+
+      it "Existe un método para obtener un Paciente formateado" do
+          expect(@individuo1.to_s).to eq("[Peso=#{@individuo1.peso}, Talla=#{@individuo1.talla}, IMC=#{@individuo1.imc}, %MC=#{@individuo1.masa}, RCC=#{@individuo1.rcc}, Pliegues=#{@individuo1.tricipital},#{@individuo1.bicipital},#{@individuo1.subescapular},#{@individuo1.suprailiaco}]:")  
+      end
+      
+      context "Pruebas para comprobar la clase de un objeto, el tipo de un objeto y su pertenecia a una jerarquı́a" do
+        it "Existe un método para comprobar el tipo de objeto" do
+          expect(@individuo1.instance_of? Paciente).to eq(true)
+        end
+
+        it "Existe un método para comprobar la clase de un objeto" do
+          expect(@individuo1.class).to eq(Paciente)
+          expect(@individuo1.is_a? Individuo).to eq(true)
+          expect(@individuo1.is_a? Paciente).to eq(true)
+        end
+
+        it "Existe un método para comprobar la jerarquía de un objeto" do
+          expect(@individuo1.kind_of? Individuo).to eq(true)
+          expect(@individuo1.kind_of? Paciente).to eq(true)
+          expect(@individuo1.kind_of? BasicObject).to eq(true)
+          expect(@individuo1.kind_of? Object).to eq(true)
+        end
       end
     end
   end
