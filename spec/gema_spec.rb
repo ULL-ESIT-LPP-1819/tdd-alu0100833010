@@ -93,6 +93,18 @@ RSpec.describe Gema do
         expect(@cereales.porcion).to eq(0.24)
       end
     end
+
+    context "Módulo Comparable" do
+      it "Pruebas para comparar la información nutricional entre dos etiquetas" do
+        expect(@lata_de_atun.grasas==@cereales.grasas).to be(false)
+        expect(@lata_de_atun.grasas_saturadas>@cereales.grasas_saturadas).to be(true)
+        expect(@lata_de_atun.hidratos<@cereales.hidratos).to be(true)
+      end
+      it "Alimentos con el mismo nombre" do
+        expect(@lata_de_atun==@cereales).to be(false)
+        expect(@cereales==@cereales).to be(true)
+      end
+    end
   end
 
   describe Lista do
