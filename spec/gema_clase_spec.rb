@@ -102,9 +102,9 @@ RSpec.describe Individuo::Individuo do
       end     
     end
   end
-  describe Lista do
+  describe Lista::Lista do
     before :all do
-      @lista = Lista.new()
+      @lista = Lista::Lista.new()
       @individuo2 = Individuo::Paciente.new(2, "Sara", "Pérez", 23, 0, "17/08/1995", "Estudiante", "No", 60.0, 1.64, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
       @individuo3 = Individuo::Paciente.new(3, "María", "García", 33, 0, "13/01/1985", "Profesora", "Si", 110, 1.67, [83.4,83.8], [105.1,105.6], [1.5,2.8,1.9], [1.6,1.2,1.9], [1.1,2.9,1.3], [1.6,2.2,2.2])
       @individuo4 = Individuo::Paciente.new(4, "Juan", "Castro", 53, 1, "04/10/1965", "Ingeniero", "No", 83, 1.78, [68.7,69.0], [71.5,71.3], [1.4,2.6,1.7], [1.8,1.1,1.6], [2.4,1.1,2.6], [2.2,1.8,1.3])
@@ -149,9 +149,13 @@ RSpec.describe Individuo::Individuo do
         expect(@lista.pop_elemento().imc).to be <= 25.0 #Peso adecuado. No recibe tratamiento.
       end
     end
+
+    context "Módulo Enumerable" do
+      
+    end
     context "Pruebas para comprobar la clase de un objeto, el tipo de un objeto y su pertenecia a una jerarquı́a" do
       it "Existe un método para comprobar el tipo de objeto" do
-        expect(@lista.instance_of? Lista).to eq(true)
+        expect(@lista.instance_of? Lista::Lista).to eq(true)
         expect(@lista.instance_of? Object).not_to eq(true)
         expect(@lista.instance_of? BasicObject).not_to eq(true)
         expect(@lista).to respond_to(:head, :tail, :size)
@@ -161,12 +165,12 @@ RSpec.describe Individuo::Individuo do
       end
 
       it "Existe un método para comprobar la clase de un objeto" do
-        expect(@lista.class).to eq(Lista)
-        expect(@lista.is_a? Lista).to eq(true)
+        expect(@lista.class).to eq(Lista::Lista)
+        expect(@lista.is_a? Lista::Lista).to eq(true)
       end
 
       it "Existe un método para comprobar la jerarquía de un objeto" do
-        expect(@lista.kind_of? Lista).to eq(true)
+        expect(@lista.kind_of? Lista::Lista).to eq(true)
         expect(@lista.kind_of? BasicObject).to eq(true)
         expect(@lista.kind_of? Object).to eq(true)
       end

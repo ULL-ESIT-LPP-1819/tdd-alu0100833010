@@ -107,9 +107,9 @@ RSpec.describe Gema do
     end
   end
 
-  describe Lista do
+  describe Lista::Lista do
     before :all do
-      @lista = Lista.new()
+      @lista = Lista::Lista.new()
       @lata_de_atun = Etiqueta::Etiqueta.new("Lata de atún", 23.0, 2.7, 0.5, 0.5, 20.0, 0.40, [0])
       @cereales = Etiqueta::Etiqueta.new("Cereales", 0.8, 0.2, 82.0, 7.0, 8.0, 1.6, [0.24])
       @chocolatina = Etiqueta::Etiqueta.new("Chocolatina", 23.0, 2.1, 81.1, 6.0, 9.0, 1.2, [0])
@@ -184,6 +184,11 @@ RSpec.describe Gema do
         expect(@lista.pop_elemento().sal).to be <= 6
       end
     end
-
+    context "Módulo Enumerable" do
+      it "Pruebas para enumerar listas de etiquetas" do
+        expect(@lista.collect { |i| i }).to eq([@lata_de_atun,@cereales,@chocolatina,@lentejas,@tomate_frito,@aceite,@leche])
+        expect(@lista.sort).to eq([@lata_de_atun,@cereales,@chocolatina,@lentejas,@tomate_frito,@aceite,@leche])
+      end
+    end
   end
 end
