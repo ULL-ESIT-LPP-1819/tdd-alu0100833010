@@ -13,7 +13,7 @@ RSpec.describe Gema do
   describe Etiqueta::Etiqueta do
     before :all do
       @lata_de_atun = Etiqueta::Etiqueta.new("Lata de atún", 23.0, 2.7, 0.5, 0.5, 20.0, 0.40, [0])
-      @cereales = Etiqueta::Etiqueta.new("Cereales", 0.8, 0.2, 82.0, 7.0, 8.0, 1.6, [0.24]) 
+      @cereales = Etiqueta::Etiqueta.new("Cereales", 0.8, 0.2, 82.0, 7.0, 8.0, 1.6, [0.24])
     end
 
     context "Expectativas iniciales" do

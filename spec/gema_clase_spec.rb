@@ -1,8 +1,9 @@
 require "spec_helper"
 
-RSpec.describe Individuo do
+RSpec.describe Individuo::Individuo do
   before :each do
-    @individuo1 = Individuo.new(1, "Sara", "Pérez", 23, 0, "17/08/1995", "Estudiante", "No") 
+    @individuo1 = Individuo::Individuo.new(1, "Sara", "Pérez", 23, 0, "17/08/1995", "Estudiante", "No")
+    @individuo7 = Individuo::Individuo.new(7, "Ayrton", "Crespo", 23, 1, "20/01/1995", "Estudiante", "No") 
   end
 
   context "Expectativas iniciales" do
@@ -13,7 +14,7 @@ RSpec.describe Individuo do
   
   context "Pruebas para comprobar la clase de un objeto, el tipo de un objeto y su pertenecia a una jerarquı́a" do
     it "Existe un método para comprobar el tipo de objeto" do
-      expect(@individuo1.instance_of? Individuo).to eq(true)
+      expect(@individuo1.instance_of? Individuo::Individuo).to eq(true)
       expect(@individuo1.instance_of? Object).not_to eq(true)
       expect(@individuo1.instance_of? BasicObject).not_to eq(true)
       expect(@individuo1).to respond_to(:n_historia, :nombre, :apellido, :edad, :sexo, :nacimiento, :ocupacion, :fumador)
@@ -21,20 +22,21 @@ RSpec.describe Individuo do
     end
 
     it "Existe un método para comprobar la clase de un objeto" do
-      expect(@individuo1.class).to eq(Individuo)
-      expect(@individuo1.is_a? Individuo).to eq(true)
+      expect(@individuo1.class).to eq(Individuo::Individuo)
+      expect(@individuo1.is_a? Individuo::Individuo).to eq(true)
     end
 
     it "Existe un método para comprobar la jerarquía de un objeto" do
-      expect(@individuo1.kind_of? Individuo).to eq(true)
+      expect(@individuo1.kind_of? Individuo::Individuo).to eq(true)
       expect(@individuo1.kind_of? BasicObject).to eq(true)
       expect(@individuo1.kind_of? Object).to eq(true)
     end
   end
 
-  describe Paciente do 
+  describe Individuo::Paciente do 
     before :each do
-      @individuo1 = Paciente.new(1, "Sara", "Pérez", 23, 0, "17/08/1995", "Estudiante", "No", 60.0, 1.64, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
+      @individuo1 = Individuo::Paciente.new(1, "Sara", "Pérez", 23, 0, "17/08/1995", "Estudiante", "No", 60.0, 1.64, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
+      @individuo7 = Individuo::Paciente.new(7, "Ayrton", "Crespo", 23, 1, "20/01/1995", "Estudiante", "No", 80.0, 1.78, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
     end
 
     context "Expectativas iniciales" do   
@@ -58,13 +60,25 @@ RSpec.describe Individuo do
       end
 
       it "Existe un método para obtener un Paciente formateado" do
-          expect(@individuo1.to_s).to eq("[Peso=#{@individuo1.peso}, Talla=#{@individuo1.talla}, IMC=#{@individuo1.imc}, %MC=#{@individuo1.masa}, RCC=#{@individuo1.rcc}, Pliegues=#{@individuo1.tricipital},#{@individuo1.bicipital},#{@individuo1.subescapular},#{@individuo1.suprailiaco}]:")  
+         expect(@individuo1.to_s).to eq("[Peso=#{@individuo1.peso}, Talla=#{@individuo1.talla}, IMC=#{@individuo1.imc}, %MC=#{@individuo1.masa}, RCC=#{@individuo1.rcc}, Pliegues=#{@individuo1.tricipital},#{@individuo1.bicipital},#{@individuo1.subescapular},#{@individuo1.suprailiaco}]:")  
+      end
+    end
+
+    context "Módulo Comparable" do
+      it "Pruebas para comparar la valoración nutricional entre dos individuos" do
+        expect(@individuo1.edad==@individuo7.edad).to be(true)
+        expect(@individuo1.n_historia<@individuo7.n_historia).to be(true)
+        expect(@individuo7.talla>@individuo1.talla).to be(true)
+      end
+      it "Individuos con el mismo nombre" do
+        expect(@individuo1==@individuo7).to be(false)
+        expect(@individuo7==@individuo7).to be(true)
       end
     end
       
     context "Pruebas para comprobar la clase de un objeto, el tipo de un objeto y su pertenecia a una jerarquı́a" do
       it "Existe un método para comprobar el tipo de objeto" do
-        expect(@individuo1.instance_of? Paciente).to eq(true)
+        expect(@individuo1.instance_of? Individuo::Paciente).to eq(true)
         expect(@individuo1.instance_of? Object).not_to eq(true)
         expect(@individuo1.instance_of? BasicObject).not_to eq(true)
         expect(@individuo1).to respond_to(:n_historia, :nombre, :apellido, :edad, :sexo, :nacimiento, :ocupacion, :fumador, :peso, :talla, :cintura, :cadera, :tricipital, :bicipital, :subescapular, :suprailiaco)
@@ -75,14 +89,14 @@ RSpec.describe Individuo do
       end
 
       it "Existe un método para comprobar la clase de un objeto" do
-        expect(@individuo1.class).to eq(Paciente)
-        expect(@individuo1.is_a? Individuo).to eq(true)
-        expect(@individuo1.is_a? Paciente).to eq(true)
+        expect(@individuo1.class).to eq(Individuo::Paciente)
+        expect(@individuo1.is_a? Individuo::Individuo).to eq(true)
+        expect(@individuo1.is_a? Individuo::Paciente).to eq(true)
       end
 
       it "Existe un método para comprobar la jerarquía de un objeto" do
-        expect(@individuo1.kind_of? Individuo).to eq(true)
-        expect(@individuo1.kind_of? Paciente).to eq(true)
+        expect(@individuo1.kind_of? Individuo::Individuo).to eq(true)
+        expect(@individuo1.kind_of? Individuo::Paciente).to eq(true)
         expect(@individuo1.kind_of? BasicObject).to eq(true)
         expect(@individuo1.kind_of? Object).to eq(true)
       end     
@@ -91,11 +105,11 @@ RSpec.describe Individuo do
   describe Lista do
     before :all do
       @lista = Lista.new()
-      @individuo2 = Paciente.new(2, "Sara", "Pérez", 23, 0, "17/08/1995", "Estudiante", "No", 60.0, 1.64, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
-      @individuo3 = Paciente.new(3, "María", "García", 33, 0, "13/01/1985", "Profesora", "Si", 110, 1.67, [83.4,83.8], [105.1,105.6], [1.5,2.8,1.9], [1.6,1.2,1.9], [1.1,2.9,1.3], [1.6,2.2,2.2])
-      @individuo4 = Paciente.new(4, "Juan", "Castro", 53, 1, "04/10/1965", "Ingeniero", "No", 83, 1.78, [68.7,69.0], [71.5,71.3], [1.4,2.6,1.7], [1.8,1.1,1.6], [2.4,1.1,2.6], [2.2,1.8,1.3])
-      @individuo5 = Paciente.new(5, "Lorena", "Rodríguez", 22, 0, "12/05/1996", "Estudiante", "Si", 47, 1.61, [60.0,60.9], [90.0,90.5], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
-      @individuo6 = Paciente.new(6, "Carlos", "Coello", 13, 1, "15/06/2005", "Estudiante", "No", 58, 1.68, [60.0,60.9], [90.0,90.5], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
+      @individuo2 = Individuo::Paciente.new(2, "Sara", "Pérez", 23, 0, "17/08/1995", "Estudiante", "No", 60.0, 1.64, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
+      @individuo3 = Individuo::Paciente.new(3, "María", "García", 33, 0, "13/01/1985", "Profesora", "Si", 110, 1.67, [83.4,83.8], [105.1,105.6], [1.5,2.8,1.9], [1.6,1.2,1.9], [1.1,2.9,1.3], [1.6,2.2,2.2])
+      @individuo4 = Individuo::Paciente.new(4, "Juan", "Castro", 53, 1, "04/10/1965", "Ingeniero", "No", 83, 1.78, [68.7,69.0], [71.5,71.3], [1.4,2.6,1.7], [1.8,1.1,1.6], [2.4,1.1,2.6], [2.2,1.8,1.3])
+      @individuo5 = Individuo::Paciente.new(5, "Lorena", "Rodríguez", 22, 0, "12/05/1996", "Estudiante", "Si", 47, 1.61, [60.0,60.9], [90.0,90.5], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
+      @individuo6 = Individuo::Paciente.new(6, "Carlos", "Coello", 13, 1, "15/06/2005", "Estudiante", "No", 58, 1.68, [60.0,60.9], [90.0,90.5], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
     end
     
     describe "Expectativas generales" do
