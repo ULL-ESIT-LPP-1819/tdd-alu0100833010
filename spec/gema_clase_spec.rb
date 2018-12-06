@@ -36,7 +36,8 @@ RSpec.describe Individuo::Individuo do
   describe Individuo::Paciente do 
     before :each do
       @individuo1 = Individuo::Paciente.new(1, "Sara", "Pérez", 23, 0, "17/08/1995", "Estudiante", "No", 60.0, 1.64, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
-      @individuo7 = Individuo::Paciente.new(7, "Ayrton", "Crespo", 23, 1, "20/01/1995", "Estudiante", "No", 80.0, 1.78, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
+      @individuo7 = Individuo::Paciente.new(7, "Ayrton", "Crespo", 20, 1, "20/01/1998", "Estudiante", "No", 80.0, 1.78, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
+      @individuo8 = Individuo::Paciente.new(8, "Antonio", "Crespo", 23, 1, "20/01/1995", "Estudiante", "No", 80.0, 1.78, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
     end
 
     context "Expectativas iniciales" do   
@@ -64,15 +65,22 @@ RSpec.describe Individuo::Individuo do
       end
     end
 
-    context "Módulo Comparable" do
+     context "Módulo Comparable" do
       it "Pruebas para comparar la valoración nutricional entre dos individuos" do
-        expect(@individuo1.edad==@individuo7.edad).to be(true)
-        expect(@individuo1.n_historia<@individuo7.n_historia).to be(true)
-        expect(@individuo7.talla>@individuo1.talla).to be(true)
-      end
-      it "Individuos con el mismo nombre" do
-        expect(@individuo1==@individuo7).to be(false)
-        expect(@individuo7==@individuo7).to be(true)
+        expect(@individuo7 < @individuo1).to be(true)
+        expect(@individuo1 < @individuo7).to be(false)
+
+        expect(@individuo7 > @individuo8).to be(false)
+        expect(@individuo8 > @individuo7).to be(true)
+
+        expect(@individuo1 == @individuo8).to be(true)
+        expect(@individuo1 == @individuo7).to be(false)
+
+        expect(@individuo7 <= @individuo1).to be(true)
+        expect(@individuo1 <= @individuo7).to be(false)
+
+        expect(@individuo7 >= @individuo8).to be(false)
+        expect(@individuo8 >= @individuo7).to be(true)
       end
     end
       

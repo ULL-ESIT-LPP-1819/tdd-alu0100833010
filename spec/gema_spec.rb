@@ -1,19 +1,14 @@
 require "spec_helper"
 
-
-RSpec.describe Gema do
-  it "has a version number" do
-    expect(Gema::VERSION).not_to be nil
-  end
-
-  it "does something useful" do
-    expect(true).to eq(true)
-  end
-
-  describe Etiqueta::Etiqueta do
+RSpec.describe Etiqueta::Etiqueta do
     before :all do
       @lata_de_atun = Etiqueta::Etiqueta.new("Lata de atún", 23.0, 2.7, 0.5, 0.5, 20.0, 0.40, [0])
       @cereales = Etiqueta::Etiqueta.new("Cereales", 0.8, 0.2, 82.0, 7.0, 8.0, 1.6, [0.24])
+      @chocolatina = Etiqueta::Etiqueta.new("Chocolatina", 23.0, 2.1, 81.1, 6.0, 9.0, 1.2, [0])
+      @lentejas = Etiqueta::Etiqueta.new("Lentejas", 23.5, 52.0, 1.4, 0, 2.0, 0.2, [0])
+      @tomate_frito = Etiqueta::Etiqueta.new("Tomate frito", 1.0, 3.5, 0.2, 3.0, 3.4, 4.7, [0])
+      @aceite = Etiqueta::Etiqueta.new("Aceite", 0.0, 0.2, 90.1, 3.4, 5.2, 1.5, [0])
+      @leche = Etiqueta::Etiqueta.new("Leche", 3.3, 4.8, 3.2, 0.0, 1.0, 4.3, [0])
     end
 
     context "Expectativas iniciales" do
@@ -96,16 +91,22 @@ RSpec.describe Gema do
 
     context "Módulo Comparable" do
       it "Pruebas para comparar la información nutricional entre dos etiquetas" do
-        expect(@lata_de_atun.grasas==@cereales.grasas).to be(false)
-        expect(@lata_de_atun.grasas_saturadas>@cereales.grasas_saturadas).to be(true)
-        expect(@lata_de_atun.hidratos<@cereales.hidratos).to be(true)
-      end
-      it "Alimentos con el mismo nombre" do
-        expect(@lata_de_atun==@cereales).to be(false)
-        expect(@cereales==@cereales).to be(true)
+        expect(@lata_de_atun < @cereales).to be(true)
+        expect(@cereales < @lata_de_atun).to be(false)
+
+        expect(@lata_de_atun > @cereales).to be(false)
+        expect(@cereales > @lata_de_atun).to be(true)
+ 
+        expect(@lata_de_atun == @lata_de_atun).to be(true)
+        expect(@lata_de_atun == @cereales).to be(false)
+ 
+        expect(@lata_de_atun <= @cereales).to be(true)
+        expect(@cereales <= @lata_de_atun).to be(false)
+
+        expect(@lata_de_atun >= @cereales).to be(false)
+        expect(@cereales >= @lata_de_atun).to be(true)
       end
     end
-  end
 
   describe Lista::Lista do
     before :all do
@@ -165,6 +166,7 @@ RSpec.describe Gema do
         expect(@lista.tail.value).to eq(@leche)
       end
     end
+
     context "Extrayendo elementos" do
       it "Existe un método para extraer elementos" do
         expect(@lista.pop_elemento()).to eq(@lata_de_atun)
@@ -185,10 +187,29 @@ RSpec.describe Gema do
       end
     end
     context "Módulo Enumerable" do
-      it "Pruebas para enumerar listas de etiquetas" do
-        expect(@lista.collect { |i| i }).to eq([@lata_de_atun,@cereales,@chocolatina,@lentejas,@tomate_frito,@aceite,@leche])
-        expect(@lista.sort).to eq([@lata_de_atun,@cereales,@chocolatina,@lentejas,@tomate_frito,@aceite,@leche])
+      it "Existe una lista vacía" do
+        expect(@lista.empty?).to eq(true)
+      end
+
+      it "Función Collect" do
+        @lista.push_elemento(@tomate_frito)
+        @lista.push_elemento(@aceite)
+        @lista.push_elemento(@cereales)
+        expect(@lista.collect { |i| i }).to eq([@tomate_frito,@aceite,@cereales])   
+      end
+      it "Función Select" do
+        expect(@lista.select { |i| i.proteinas.round % 2 == 0 }).to eq([@cereales])
+      end
+      it "Función Sort" do
+        expect(@lista.sort).to eq([@tomate_frito,@cereales,@aceite])
+      end
+      it "Función Min" do
+        expect(@lista.min).to eq(@tomate_frito)
+      end
+      it "Función Max" do
+        expect(@lista.max).to eq(@aceite)
       end
     end
+
   end
 end

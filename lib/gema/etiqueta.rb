@@ -49,5 +49,9 @@ module Etiqueta
     def porcion
       (@grasas*30)/100     
     end
+
+    def <=>(other)
+      valor_kJ <=> other.valor_kJ
+    end
   end
 end

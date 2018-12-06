@@ -61,6 +61,10 @@ module Individuo
  
     def to_s
       "[Peso=#{@peso}, Talla=#{@talla}, IMC=#{imc}, %MC=#{masa}, RCC=#{rcc}, Pliegues=#{tricipital},#{bicipital},#{subescapular},#{suprailiaco}]:"
+    end
+
+    def <=>(other)
+      edad <=> other.edad
     end  
   end
 end
