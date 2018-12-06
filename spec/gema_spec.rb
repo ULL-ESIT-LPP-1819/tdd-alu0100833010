@@ -10,10 +10,10 @@ RSpec.describe Gema do
     expect(true).to eq(true)
   end
 
-  describe Etiqueta do
+  describe Etiqueta::Etiqueta do
     before :all do
-      @lata_de_atun = Etiqueta.new("Lata de atún", 23.0, 2.7, 0.5, 0.5, 20.0, 0.40, [0])
-      @cereales = Etiqueta.new("Cereales", 0.8, 0.2, 82.0, 7.0, 8.0, 1.6, [0.24]) 
+      @lata_de_atun = Etiqueta::Etiqueta.new("Lata de atún", 23.0, 2.7, 0.5, 0.5, 20.0, 0.40, [0])
+      @cereales = Etiqueta::Etiqueta.new("Cereales", 0.8, 0.2, 82.0, 7.0, 8.0, 1.6, [0.24]) 
     end
 
     context "Expectativas iniciales" do
@@ -110,13 +110,13 @@ RSpec.describe Gema do
   describe Lista do
     before :all do
       @lista = Lista.new()
-      @lata_de_atun = Etiqueta.new("Lata de atún", 23.0, 2.7, 0.5, 0.5, 20.0, 0.40, [0])
-      @cereales = Etiqueta.new("Cereales", 0.8, 0.2, 82.0, 7.0, 8.0, 1.6, [0.24])
-      @chocolatina = Etiqueta.new("Chocolatina", 23.0, 2.1, 81.1, 6.0, 9.0, 1.2, [0])
-      @lentejas = Etiqueta.new("Lentejas", 23.5, 52.0, 1.4, 0, 2.0, 0.2, [0])
-      @tomate_frito = Etiqueta.new("Tomate frito", 1.0, 3.5, 0.2, 3.0, 3.4, 4.7, [0])
-      @aceite = Etiqueta.new("Aceite", 0.0, 0.2, 90.1, 3.4, 5.2, 1.5, [0])
-      @leche = Etiqueta.new("Leche", 3.3, 4.8, 3.2, 0.0, 1.0, 4.3, [0])
+      @lata_de_atun = Etiqueta::Etiqueta.new("Lata de atún", 23.0, 2.7, 0.5, 0.5, 20.0, 0.40, [0])
+      @cereales = Etiqueta::Etiqueta.new("Cereales", 0.8, 0.2, 82.0, 7.0, 8.0, 1.6, [0.24])
+      @chocolatina = Etiqueta::Etiqueta.new("Chocolatina", 23.0, 2.1, 81.1, 6.0, 9.0, 1.2, [0])
+      @lentejas = Etiqueta::Etiqueta.new("Lentejas", 23.5, 52.0, 1.4, 0, 2.0, 0.2, [0])
+      @tomate_frito = Etiqueta::Etiqueta.new("Tomate frito", 1.0, 3.5, 0.2, 3.0, 3.4, 4.7, [0])
+      @aceite = Etiqueta::Etiqueta.new("Aceite", 0.0, 0.2, 90.1, 3.4, 5.2, 1.5, [0])
+      @leche = Etiqueta::Etiqueta.new("Leche", 3.3, 4.8, 3.2, 0.0, 1.0, 4.3, [0])
     end
       
     context "Expectativas iniciales" do

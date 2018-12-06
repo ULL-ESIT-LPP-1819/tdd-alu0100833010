@@ -158,13 +158,13 @@ RSpec.describe Individuo do
       end
     end
   end
-  describe Etiqueta do
+  describe Etiqueta::Etiqueta do
     before :each do
-      @lata_de_atun = Etiqueta.new("Lata de atún", 23.0, 2.7, 0.5, 0.5, 20.0, 0.40, [0])
+      @lata_de_atun = Etiqueta::Etiqueta.new("Lata de atún", 23.0, 2.7, 0.5, 0.5, 20.0, 0.40, [0])
     end 
     context "Pruebas para comprobar la clase de un objeto, el tipo de un objeto y su pertenecia a una jerarquı́a" do
       it "Existe un método para comprobar el tipo de objeto" do
-        expect(@lata_de_atun.instance_of? Etiqueta).to eq(true)
+        expect(@lata_de_atun.instance_of? Etiqueta::Etiqueta).to eq(true)
         expect(@lata_de_atun.instance_of? Object).not_to eq(true)
         expect(@lata_de_atun.instance_of? BasicObject).not_to eq(true)
         expect(@lata_de_atun).to respond_to(:nombre, :grasas, :grasas_saturadas, :hidratos, :azucares, :proteinas, :sal)
@@ -174,12 +174,12 @@ RSpec.describe Individuo do
       end
 
       it "Existe un método para comprobar la clase de un objeto" do
-        expect(@lata_de_atun.class).to eq(Etiqueta)
-        expect(@lata_de_atun.is_a? Etiqueta).to eq(true)
+        expect(@lata_de_atun.class).to eq(Etiqueta::Etiqueta)
+        expect(@lata_de_atun.is_a? Etiqueta::Etiqueta).to eq(true)
       end
 
       it "Existe un método para comprobar la jerarquía de un objeto" do
-        expect(@lata_de_atun.kind_of? Etiqueta).to eq(true)
+        expect(@lata_de_atun.kind_of? Etiqueta::Etiqueta).to eq(true)
         expect(@lata_de_atun.kind_of? BasicObject).to eq(true)
         expect(@lata_de_atun.kind_of? Object).to eq(true)
       end
