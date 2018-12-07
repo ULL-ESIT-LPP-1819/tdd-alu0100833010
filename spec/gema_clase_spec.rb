@@ -170,7 +170,7 @@ RSpec.describe Individuo::Individuo do
         expect(@lista.collect { |i| i }).to eq([@individuo2,@individuo6,@individuo4])
       end
       it "Función Select" do
-        expect(@lista.select { |i| i }).to eq([@individuo2,@individuo6,@individuo4])
+        expect(@lista.select { |i| i.edad.round % 2 == 0 }).to eq([])
       end
       it "Función Sort" do
         expect(@lista.sort).to eq([@individuo6,@individuo2,@individuo4])
