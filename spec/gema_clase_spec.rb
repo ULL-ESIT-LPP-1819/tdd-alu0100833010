@@ -159,7 +159,28 @@ RSpec.describe Individuo::Individuo do
     end
 
     context "Módulo Enumerable" do
-      
+      it "Existe una lista vacía" do
+        expect(@lista.empty?).to eq(true)
+      end
+
+      it "Función Collect" do
+        @lista.push_elemento(@individuo2)
+        @lista.push_elemento(@individuo6)
+        @lista.push_elemento(@individuo4)
+        expect(@lista.collect { |i| i }).to eq([@individuo2,@individuo6,@individuo4])
+      end
+      it "Función Select" do
+        expect(@lista.select { |i| i }).to eq([@individuo2,@individuo6,@individuo4])
+      end
+      it "Función Sort" do
+        expect(@lista.sort).to eq([@individuo6,@individuo2,@individuo4])
+      end
+      it "Función Min" do
+        expect(@lista.min).to eq(@individuo6)
+      end
+      it "Función Max" do
+        expect(@lista.max).to eq(@individuo4)
+      end
     end
     context "Pruebas para comprobar la clase de un objeto, el tipo de un objeto y su pertenecia a una jerarquı́a" do
       it "Existe un método para comprobar el tipo de objeto" do

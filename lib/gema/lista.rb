@@ -1,19 +1,32 @@
+# encoding utf-8
+# Author:: Sara Pérez Rodríguez (mailto:alu0100833010@ull.edu.es)
+# Copyright:: Creative Commons
+# License:: Distributes under the same term as Ruby
+# Asignatura: Lenguajes y paradigmas de programación
+
+# Estructura de datos Node, con un valor, un nodo previo y siguiente.
 Node = Struct.new(:value, :next, :prev)
 
+# Módulo que incluye clases y sus métodos.
 module Lista
 
+  # Clase lista con head, tail y size.
   class Lista
 
+    # Atributos de la clase Lista accesibles desde cualquier método.
     attr_accessor :head, :tail, :size
-
+    
+    # Incluímos el modulo enumerable.
     include Enumerable
 
+    # Método initialize para definir un objeto Lista con sus atributos.
     def initialize()
       @head = Node.new(nil, nil, nil)
       @tail = Node.new(nil, nil, nil)
       @size = 0
     end
  
+    # Método para saber si la lista está o no vacía.
     def empty?()
       if (@size == 0)
         return true
@@ -22,6 +35,7 @@ module Lista
       end
     end
 
+    # Método para insertar valores en la lista.
     def push_elemento(valor)
       if (@size == 0)
         elemento = Node.new(valor, nil, nil)
@@ -39,6 +53,7 @@ module Lista
       end
     end
 
+    # Método para extraer valores de la lista.
     def pop_elemento()
       if (@size == 0)
         puts "Lista vacía. No hay nodos para extraer."
@@ -62,6 +77,8 @@ module Lista
       end
       return valor
     end
+   
+    # Método para utilizar otros métodos del módulo enumarable.
     def each
       ini = @head
       while (ini != nil)
