@@ -114,6 +114,11 @@ module Individuo
       (gasto_energetico_basal * @factor_actividad).round(1)
     end
 
+    #Método para calcular el gasto energético total
+    def gasto_energetico_total
+      (gasto_energetico_basal + efecto_termogeno + gasto_actividad_fisica).round(1)
+    end
+
     # Método para mostrar el flujo de salida formateado.
     def to_s
       "[Peso=#{@peso}, Talla=#{@talla}, IMC=#{imc}, %MC=#{masa}, RCC=#{rcc}, Pliegues=#{tricipital},#{bicipital},#{subescapular},#{suprailiaco}]:"

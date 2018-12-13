@@ -131,9 +131,9 @@ RSpec.describe Individuo::Individuo do
         expect(@individuo8.gasto_actividad_fisica).to eq(501.9)
       end
       it "Existe un método para calcular el gasto energético total" do
-        expect(@individuo1.gasto_energetico_total).to eq(161.9)
-        expect(@individuo7.gasto_energetico_total).to eq(981.5)
-        expect(@individuo8.gasto_energetico_total).to eq(501.9)
+        expect(@individuo1.gasto_energetico_total).to eq(1645.8)
+        expect(@individuo7.gasto_energetico_total).to eq(2980.8)
+        expect(@individuo8.gasto_energetico_total).to eq(2546.6)
       end
     end
   end
