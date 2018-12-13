@@ -232,4 +232,15 @@ RSpec.describe Individuo::Individuo do
       end
     end
   end
+  describe Individuo::Paciente do
+    context "Programación funcional. Expectativas para el menú dietético." do
+      it "Existe un método para calcular el peso teórico ideal" do
+        expect(@individuo2.peso_teorico_ideal).to eq()
+        expect(@individuo3.peso_teorico_ideal).to eq()
+        expect(@individuo4.peso_teorico_ideal).to eq()
+        expect(@individuo5.peso_teorico_ideal).to eq()
+        expect(@individuo6.peso_teorico_ideal).to eq()
+      end
+    end
+  end
 end
