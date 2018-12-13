@@ -181,8 +181,9 @@ RSpec.describe Individuo::Individuo do
         expect(total_calorias >= gasto_energetico).to eq(true)
       end
       it "Menú dietético 5. Cubre las exigencias calóricas del paciente." do
-        calorias_menu = @menu_dietetico5.collect{ |x| x.valor_kJ}
-        total_calorias = calorias_menu.reduce(:+)
+        menu_dietetico6 = @menu_dietetico1.zip(@menu_dietetico2)
+        calorias_menu = menu_dietetico6.collect { |x, index| x.valor_kJ }
+        total_calorias = calorias_menu.reduce(:+) 
         gasto_energetico = @individuo7.gasto_energetico_total
         gasto_energetico = gasto_energetico * 0.10
         expect(total_calorias >= gasto_energetico).to eq(true)
