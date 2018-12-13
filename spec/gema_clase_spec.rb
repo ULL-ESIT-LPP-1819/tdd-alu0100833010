@@ -116,9 +116,9 @@ RSpec.describe Individuo::Individuo do
         expect(@individuo8.peso_teorico_ideal).to eq(77.75)
       end
       it "Existe un método para calcular el gasto energético basal" do
-        expect(@individuo1.gasto_energetico_basal).to eq(60.5)
-        expect(@individuo7.gasto_energetico_basal).to eq(71)
-        expect(@individuo8.gasto_energetico_basal).to eq(77.75)
+        expect(@individuo1.gasto_energetico_basal).to eq(1349)
+        expect(@individuo7.gasto_energetico_basal).to eq(1817.5)
+        expect(@individuo8.gasto_energetico_basal).to eq(1858.8)
       end
     end
   end

@@ -94,6 +94,15 @@ module Individuo
     def peso_teorico_ideal
       ((@talla - 1.50)*100 * 0.75 + 50).round(2)
     end
+
+    #Método para calcular el peso teórico ideal
+    def gasto_energetico_basal
+      if (@sexo == 0)
+            ((10 * @peso) + (6.25 * @talla * 100) - (5 * @edad) - 161).round(1)
+        elsif(@sexo == 1)
+            ((10 * @peso) + (6.25 * @talla * 100) - (5 * @edad) + 5).round(1)
+        end
+    end
     # Método para mostrar el flujo de salida formateado.
     def to_s
       "[Peso=#{@peso}, Talla=#{@talla}, IMC=#{imc}, %MC=#{masa}, RCC=#{rcc}, Pliegues=#{tricipital},#{bicipital},#{subescapular},#{suprailiaco}]:"
