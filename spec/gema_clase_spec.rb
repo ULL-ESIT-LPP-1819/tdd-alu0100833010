@@ -121,9 +121,9 @@ RSpec.describe Individuo::Individuo do
         expect(@individuo8.gasto_energetico_basal).to eq(1858.8)
       end
       it "Existe un método para calcular el efecto termogeno" do
-        expect(@individuo1.efecto_termogeno).to eq(1349)
-        expect(@individuo7.efecto_termogeno).to eq(1817.5)
-        expect(@individuo8.efecto_termogeno).to eq(1858.8)
+        expect(@individuo1.efecto_termogeno).to eq(134.9)
+        expect(@individuo7.efecto_termogeno).to eq(181.8)
+        expect(@individuo8.efecto_termogeno).to eq(185.9)
       end
     end
   end
