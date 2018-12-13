@@ -37,7 +37,7 @@ RSpec.describe Individuo::Individuo do
     before :each do
       @individuo1 = Individuo::Paciente.new(1, "Sara", "Pérez", 23, 0, "17/08/1995", "Estudiante", "No", 60.0, 1.64, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
       @individuo7 = Individuo::Paciente.new(7, "Ayrton", "Crespo", 20, 1, "20/01/1998", "Estudiante", "No", 80.0, 1.78, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
-      @individuo8 = Individuo::Paciente.new(8, "Antonio", "Crespo", 23, 1, "20/01/1995", "Estudiante", "No", 80.0, 1.78, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
+      @individuo8 = Individuo::Paciente.new(8, "Antonio", "Crespo", 23, 1, "20/01/1995", "Estudiante", "No", 80.0, 1.87, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
     end
 
     context "Expectativas iniciales" do   
@@ -108,6 +108,13 @@ RSpec.describe Individuo::Individuo do
         expect(@individuo1.kind_of? BasicObject).to eq(true)
         expect(@individuo1.kind_of? Object).to eq(true)
       end     
+    end
+    context "Programación funcional. Expectativas para el menú dietético." do
+      it "Existe un método para calcular el peso teórico ideal" do
+        expect(@individuo1.peso_teorico_ideal).to eq(60.5)
+        expect(@individuo7.peso_teorico_ideal).to eq(71)
+        expect(@individuo8.peso_teorico_ideal).to eq(77.75)
+      end
     end
   end
   describe Lista::Lista do
@@ -229,17 +236,6 @@ RSpec.describe Individuo::Individuo do
         expect(@lata_de_atun.kind_of? Etiqueta::Etiqueta).to eq(true)
         expect(@lata_de_atun.kind_of? BasicObject).to eq(true)
         expect(@lata_de_atun.kind_of? Object).to eq(true)
-      end
-    end
-  end
-  describe Individuo::Paciente do
-    context "Programación funcional. Expectativas para el menú dietético." do
-      it "Existe un método para calcular el peso teórico ideal" do
-        expect(@individuo2.peso_teorico_ideal).to eq()
-        expect(@individuo3.peso_teorico_ideal).to eq()
-        expect(@individuo4.peso_teorico_ideal).to eq()
-        expect(@individuo5.peso_teorico_ideal).to eq()
-        expect(@individuo6.peso_teorico_ideal).to eq()
       end
     end
   end

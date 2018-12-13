@@ -89,7 +89,11 @@ module Individuo
     def suprailiaco
       (@suprailiaco[0]+@suprailiaco[1]+@suprailiaco[2])/3
     end
- 
+
+    #Método para calcular el peso teórico ideal
+    def peso_teorico_ideal
+      ((@talla - 1.50)*100 * 0.75 + 50).round(2)
+    end
     # Método para mostrar el flujo de salida formateado.
     def to_s
       "[Peso=#{@peso}, Talla=#{@talla}, IMC=#{imc}, %MC=#{masa}, RCC=#{rcc}, Pliegues=#{tricipital},#{bicipital},#{subescapular},#{suprailiaco}]:"
