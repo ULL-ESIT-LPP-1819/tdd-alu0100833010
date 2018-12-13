@@ -109,6 +109,7 @@ RSpec.describe Individuo::Individuo do
         expect(@individuo1.kind_of? Object).to eq(true)
       end     
     end
+    # -------------------------------------------------------------------------------------------------------------- 
     context "Programación funcional. Expectativas para el menú dietético." do
       it "Existe un método para calcular el peso teórico ideal" do
         expect(@individuo1.peso_teorico_ideal).to eq(60.5)
@@ -136,6 +137,58 @@ RSpec.describe Individuo::Individuo do
         expect(@individuo8.gasto_energetico_total).to eq(2546.6)
       end
     end
+    context "Programación funcional. Menú dietético." do
+      before :all do
+        @lata_de_atun = Etiqueta::Etiqueta.new("Lata de atún", 23.0, 2.7, 0.5, 0.5, 20.0, 0.40, [0])
+        @cereales = Etiqueta::Etiqueta.new("Cereales", 0.8, 0.2, 82.0, 7.0, 8.0, 1.6, [0.24])
+        @chocolatina = Etiqueta::Etiqueta.new("Chocolatina", 23.0, 2.1, 81.1, 6.0, 9.0, 1.2, [0])
+        @lentejas = Etiqueta::Etiqueta.new("Lentejas", 23.5, 52.0, 1.4, 0, 2.0, 0.2, [0])
+        @tomate_frito = Etiqueta::Etiqueta.new("Tomate frito", 1.0, 3.5, 0.2, 3.0, 3.4, 4.7, [0])
+        @aceite = Etiqueta::Etiqueta.new("Aceite", 0.0, 0.2, 90.1, 3.4, 5.2, 1.5, [0])
+        @leche = Etiqueta::Etiqueta.new("Leche", 3.3, 4.8, 3.2, 0.0, 1.0, 4.3, [0])
+        @menu_dietetico1 = [@lata_de_atun, @tomate_frito]
+        @menu_dietetico2 = [@cereales, @chocolatina, @leche]
+        @menu_dietetico3 = [@lentejas, @aceite]
+        @menu_dietetico4 = [@lentejas, @tomate_frito, @lata_de_atun]
+        @menu_dietetico5 = [@leche, @lentejas, @chocolatina]
+      end
+      it "Menú dietético 1. Cubre las exigencias calóricas del paciente." do
+        calorias_menu = @menu_dietetico1.map{ |i| i.valor_kJ}
+        total_calorias = calorias_menu.reduce(:+)
+        gasto_energetico = @individuo1.gasto_energetico_total
+        gasto_energetico = gasto_energetico * 0.10
+        expect(total_calorias >= gasto_energetico).to eq(true)
+      end
+      it "Menú dietético 2. Cubre las exigencias calóricas del paciente." do
+        calorias_menu = @menu_dietetico2.map{ |i| i.valor_kJ}
+        total_calorias = calorias_menu.reduce(:+)
+        gasto_energetico = @individuo7.gasto_energetico_total
+        gasto_energetico = gasto_energetico * 0.10
+        expect(total_calorias >= gasto_energetico).to eq(true)
+      end
+      it "Menú dietético 3. Cubre las exigencias calóricas del paciente." do
+        calorias_menu = @menu_dietetico3.collect{ |x| x.valor_kJ}
+        total_calorias = calorias_menu.reduce(:+)
+        gasto_energetico = @individuo8.gasto_energetico_total
+        gasto_energetico = gasto_energetico * 0.10
+        expect(total_calorias >= gasto_energetico).to eq(true)
+      end
+      it "Menú dietético 4. Cubre las exigencias calóricas del paciente." do
+        calorias_menu = @menu_dietetico4.collect{ |x| x.valor_kJ}
+        total_calorias = calorias_menu.reduce(:+)
+        gasto_energetico = @individuo1.gasto_energetico_total
+        gasto_energetico = gasto_energetico * 0.10
+        expect(total_calorias >= gasto_energetico).to eq(true)
+      end
+      it "Menú dietético 5. Cubre las exigencias calóricas del paciente." do
+        calorias_menu = @menu_dietetico5.collect{ |x| x.valor_kJ}
+        total_calorias = calorias_menu.reduce(:+)
+        gasto_energetico = @individuo7.gasto_energetico_total
+        gasto_energetico = gasto_energetico * 0.10
+        expect(total_calorias >= gasto_energetico).to eq(true)
+      end
+    end
+    # --------------------------------------------------------------------------------------------------------------
   end
   describe Lista::Lista do
     before :all do
