@@ -35,9 +35,9 @@ RSpec.describe Individuo::Individuo do
 
   describe Individuo::Paciente do 
     before :each do
-      @individuo1 = Individuo::Paciente.new(1, "Sara", "Pérez", 23, 0, "17/08/1995", "Estudiante", "No", 60.0, 1.64, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
-      @individuo7 = Individuo::Paciente.new(7, "Ayrton", "Crespo", 20, 1, "20/01/1998", "Estudiante", "No", 80.0, 1.78, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
-      @individuo8 = Individuo::Paciente.new(8, "Antonio", "Crespo", 23, 1, "20/01/1995", "Estudiante", "No", 80.0, 1.87, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
+      @individuo1 = Individuo::Paciente.new(1, "Sara", "Pérez", 23, 0, "17/08/1995", "Estudiante", "No", 60.0, 1.64, 0.12,[67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
+      @individuo7 = Individuo::Paciente.new(7, "Ayrton", "Crespo", 20, 1, "20/01/1998", "Estudiante", "No", 80.0, 1.78, 0.54, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
+      @individuo8 = Individuo::Paciente.new(8, "Antonio", "Crespo", 23, 1, "20/01/1995", "Estudiante", "No", 80.0, 1.87, 0.27, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
     end
 
     context "Expectativas iniciales" do   
@@ -126,20 +126,20 @@ RSpec.describe Individuo::Individuo do
         expect(@individuo8.efecto_termogeno).to eq(185.9)
       end
       it "Existe un método para calcular el gasto de actividad física" do
-        expect(@individuo1.gasto_actividad_fisica).to eq(134.9)
-        expect(@individuo7.gasto_actividad_fisica).to eq(181.8)
-        expect(@individuo8.gasto_actividad_fisica).to eq(185.9)
+        expect(@individuo1.gasto_actividad_fisica).to eq(161.9)
+        expect(@individuo7.gasto_actividad_fisica).to eq(981.5)
+        expect(@individuo8.gasto_actividad_fisica).to eq(501.9)
       end
     end
   end
   describe Lista::Lista do
     before :all do
       @lista = Lista::Lista.new()
-      @individuo2 = Individuo::Paciente.new(2, "Sara", "Pérez", 23, 0, "17/08/1995", "Estudiante", "No", 60.0, 1.64, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
-      @individuo3 = Individuo::Paciente.new(3, "María", "García", 33, 0, "13/01/1985", "Profesora", "Si", 110, 1.67, [83.4,83.8], [105.1,105.6], [1.5,2.8,1.9], [1.6,1.2,1.9], [1.1,2.9,1.3], [1.6,2.2,2.2])
-      @individuo4 = Individuo::Paciente.new(4, "Juan", "Castro", 53, 1, "04/10/1965", "Ingeniero", "No", 83, 1.78, [68.7,69.0], [71.5,71.3], [1.4,2.6,1.7], [1.8,1.1,1.6], [2.4,1.1,2.6], [2.2,1.8,1.3])
-      @individuo5 = Individuo::Paciente.new(5, "Lorena", "Rodríguez", 22, 0, "12/05/1996", "Estudiante", "Si", 47, 1.61, [60.0,60.9], [90.0,90.5], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
-      @individuo6 = Individuo::Paciente.new(6, "Carlos", "Coello", 13, 1, "15/06/2005", "Estudiante", "No", 58, 1.68, [60.0,60.9], [90.0,90.5], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
+      @individuo2 = Individuo::Paciente.new(2, "Sara", "Pérez", 23, 0, "17/08/1995", "Estudiante", "No", 60.0, 1.64, 0.0, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
+      @individuo3 = Individuo::Paciente.new(3, "María", "García", 33, 0, "13/01/1985", "Profesora", "Si", 110, 1.67, 0.12,[83.4,83.8], [105.1,105.6], [1.5,2.8,1.9], [1.6,1.2,1.9], [1.1,2.9,1.3], [1.6,2.2,2.2])
+      @individuo4 = Individuo::Paciente.new(4, "Juan", "Castro", 53, 1, "04/10/1965", "Ingeniero", "No", 83, 1.78, 0.27, [68.7,69.0], [71.5,71.3], [1.4,2.6,1.7], [1.8,1.1,1.6], [2.4,1.1,2.6], [2.2,1.8,1.3])
+      @individuo5 = Individuo::Paciente.new(5, "Lorena", "Rodríguez", 22, 0, "12/05/1996", "Estudiante", "Si", 47, 1.61, 0.54, [60.0,60.9], [90.0,90.5], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
+      @individuo6 = Individuo::Paciente.new(6, "Carlos", "Coello", 13, 1, "15/06/2005", "Estudiante", "No", 58, 1.68, 0.12, [60.0,60.9], [90.0,90.5], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
     end
     
     describe "Expectativas generales" do

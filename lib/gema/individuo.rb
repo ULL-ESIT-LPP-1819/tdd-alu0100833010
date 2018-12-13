@@ -40,9 +40,9 @@ module Individuo
     attr_accessor :peso, :talla
 
     # Método initialize para definir el objeto con los atributos.
-    def initialize (n_historia, nombre, apellido, edad, sexo, nacimiento, ocupacion, fumador, peso, talla, cintura, cadera, tricipital, bicipital, subescapular, suprailiaco)
+    def initialize (n_historia, nombre, apellido, edad, sexo, nacimiento, ocupacion, fumador, peso, talla, factor_actividad, cintura, cadera, tricipital, bicipital, subescapular, suprailiaco)
       super(n_historia, nombre, apellido, edad, sexo, nacimiento, ocupacion, fumador)
-      @peso, @talla, @cintura, @cadera, @tricipital, @bicipital, @subescapular, @suprailiaco = peso, talla, cintura, cadera, tricipital, bicipital, subescapular, suprailiaco
+      @peso, @talla, @factor_actividad, @cintura, @cadera, @tricipital, @bicipital, @subescapular, @suprailiaco = peso, talla, factor_actividad, cintura, cadera, tricipital, bicipital, subescapular, suprailiaco
     end
  
     # Método para calcular el índice de masa corporal.
@@ -107,6 +107,11 @@ module Individuo
     #Método para calcular el efecto termogeno
     def efecto_termogeno
       (gasto_energetico_basal * 0.10).round(1)
+    end
+
+    #Método para calcular el gasto de actividad fisica
+    def gasto_actividad_fisica
+      (gasto_energetico_basal * @factor_actividad).round(1)
     end
 
     # Método para mostrar el flujo de salida formateado.
