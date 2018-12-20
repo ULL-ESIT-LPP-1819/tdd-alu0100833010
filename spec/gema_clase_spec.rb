@@ -313,6 +313,7 @@ RSpec.describe Individuo::Individuo do
       end
     end
   end
+  # Práctica 11. --------------------------------------------------------------------------------------------------------------------
   describe Etiqueta::Etiqueta do
     before :all do
       @lata_de_atun = Etiqueta::Etiqueta.new("Lata de atún", 23.0, 2.7, 0.5, 0.5, 20.0, 0.40, [0])
@@ -322,6 +323,7 @@ RSpec.describe Individuo::Individuo do
       @tomate_frito = Etiqueta::Etiqueta.new("Tomate frito", 1.0, 3.5, 0.2, 3.0, 3.4, 4.7, [0])
       @aceite = Etiqueta::Etiqueta.new("Aceite", 0.0, 0.2, 90.1, 3.4, 5.2, 1.5, [0])
       @leche = Etiqueta::Etiqueta.new("Leche", 3.3, 4.8, 3.2, 0.0, 1.0, 4.3, [0])
+
       @menu_dietetico1 = [@lata_de_atun, @tomate_frito]
       @menu_dietetico2 = [@cereales, @chocolatina, @leche]
       @menu_dietetico3 = [@lentejas, @aceite]
@@ -332,6 +334,19 @@ RSpec.describe Individuo::Individuo do
       @menu_dietetico8 = [@tomate_frito, @aceite]
       @menu_dietetico9 = [@lentejas, @chocolatina, @lata_de_atun]
       @menu_dietetico10 = [@leche, @chocolatina]
+
+      @list = Lista::Lista.new()
+      @indi1 = Individuo::Paciente.new(21, "Sara", "Pérez", 23, 0, "17/08/1995", "Estudiante", "No", 60.0, 1.64, 0.0, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
+      @indi2 = Individuo::Paciente.new(22, "María", "García", 33, 0, "13/01/1985", "Profesora", "Si", 110, 1.67, 0.12,[83.4,83.8], [105.1,105.6], [1.5,2.8,1.9], [1.6,1.2,1.9], [1.1,2.9,1.3], [1.6,2.2,2.2])
+      @indi3 = Individuo::Paciente.new(23, "Juan", "Castro", 53, 1, "04/10/1965", "Ingeniero", "No", 83, 1.78, 0.27, [68.7,69.0], [71.5,71.3], [1.4,2.6,1.7], [1.8,1.1,1.6], [2.4,1.1,2.6], [2.2,1.8,1.3])
+      @indi4 = Individuo::Paciente.new(24, "Lorena", "Rodríguez", 22, 0, "12/05/1996", "Estudiante", "Si", 47, 1.61, 0.54, [60.0,60.9], [90.0,90.5], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
+      @indi5 = Individuo::Paciente.new(25, "Carlos", "Coello", 13, 1, "15/06/2005", "Estudiante", "No", 58, 1.68, 0.12, [60.0,60.9], [90.0,90.5], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
+      @indi6 = Individuo::Paciente.new(26, "Petra", "Pérez", 32, 0, "17/08/1986", "Ingeniera", "No", 60.0, 1.64, 0.0, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
+      @indi7 = Individuo::Paciente.new(27, "Laura", "García", 43, 0, "13/01/1975", "Floristera", "Si", 110, 1.67, 0.12,[83.4,83.8], [105.1,105.6], [1.5,2.8,1.9], [1.6,1.2,1.9], [1.1,2.9,1.3], [1.6,2.2,2.2])
+      @indi8 = Individuo::Paciente.new(28, "Manolo", "Castro", 73, 1, "04/10/1945", "Jubilado", "No", 83, 1.78, 0.27, [68.7,69.0], [71.5,71.3], [1.4,2.6,1.7], [1.8,1.1,1.6], [2.4,1.1,2.6], [2.2,1.8,1.3])
+      @indi9 = Individuo::Paciente.new(29, "Carolina", "Rodríguez", 15, 0, "12/05/2003", "Estudiante", "Si", 47, 1.61, 0.54, [60.0,60.9], [90.0,90.5], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
+      @indi10 = Individuo::Paciente.new(210, "Eduardo", "Coello", 26, 1, "15/06/1992", "Administrador", "No", 58, 1.68, 0.12, [60.0,60.9], [90.0,90.5], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
+      
     end
   end
 end
