@@ -316,6 +316,7 @@ RSpec.describe Individuo::Individuo do
   # Práctica 11. --------------------------------------------------------------------------------------------------------------------
   describe Etiqueta::Etiqueta do
     before :all do
+      @array = []
       @lata_de_atun = Etiqueta::Etiqueta.new("Lata de atún", 23.0, 2.7, 0.5, 0.5, 20.0, 0.40, [0])
       @cereales = Etiqueta::Etiqueta.new("Cereales", 0.8, 0.2, 82.0, 7.0, 8.0, 1.6, [0.24])
       @chocolatina = Etiqueta::Etiqueta.new("Chocolatina", 23.0, 2.1, 81.1, 6.0, 9.0, 1.2, [0])
@@ -335,6 +336,17 @@ RSpec.describe Individuo::Individuo do
       @menu_dietetico9 = [@lentejas, @chocolatina, @lata_de_atun]
       @menu_dietetico10 = [@leche, @chocolatina]
 
+      @array << @menu_dietetico1
+      @array << @menu_dietetico2
+      @array << @menu_dietetico3
+      @array << @menu_dietetico4
+      @array << @menu_dietetico5
+      @array << @menu_dietetico6
+      @array << @menu_dietetico7
+      @array << @menu_dietetico8
+      @array << @menu_dietetico9
+      @array << @menu_dietetico10
+
       @list = Lista::Lista.new()
       @indi1 = Individuo::Paciente.new(21, "Sara", "Pérez", 23, 0, "17/08/1995", "Estudiante", "No", 60.0, 1.64, 0.0, [67.6,68.1], [93.6,94.1], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
       @indi2 = Individuo::Paciente.new(22, "María", "García", 33, 0, "13/01/1985", "Profesora", "Si", 110, 1.67, 0.12,[83.4,83.8], [105.1,105.6], [1.5,2.8,1.9], [1.6,1.2,1.9], [1.1,2.9,1.3], [1.6,2.2,2.2])
@@ -346,7 +358,32 @@ RSpec.describe Individuo::Individuo do
       @indi8 = Individuo::Paciente.new(28, "Manolo", "Castro", 73, 1, "04/10/1945", "Jubilado", "No", 83, 1.78, 0.27, [68.7,69.0], [71.5,71.3], [1.4,2.6,1.7], [1.8,1.1,1.6], [2.4,1.1,2.6], [2.2,1.8,1.3])
       @indi9 = Individuo::Paciente.new(29, "Carolina", "Rodríguez", 15, 0, "12/05/2003", "Estudiante", "Si", 47, 1.61, 0.54, [60.0,60.9], [90.0,90.5], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
       @indi10 = Individuo::Paciente.new(210, "Eduardo", "Coello", 26, 1, "15/06/1992", "Administrador", "No", 58, 1.68, 0.12, [60.0,60.9], [90.0,90.5], [1.2,2.2,1.3], [1.1,1.9,1.3], [1.4,2.1,1.6], [1.2,2.8,2.3])
+    end
+    context "Expectativas generales para la lista." do
+      it "Existe una lista vacía" do
+        expect(@list.empty?).to eq(true)
+      end
+
+      it "Existe un método para insertar elementos" do
+        expect(@list.push_elemento(@indi1)).to eq(@indi1)
+        expect(@list.push_elemento(@indi2)).to eq(@indi2)
+        expect(@list.push_elemento(@indi3)).to eq(@indi3)
+        expect(@list.push_elemento(@indi4)).to eq(@indi4)
+        expect(@list.push_elemento(@indi5)).to eq(@indi5)
+        expect(@list.push_elemento(@indi6)).to eq(@indi6)
+        expect(@list.push_elemento(@indi7)).to eq(@indi7)
+        expect(@list.push_elemento(@indi8)).to eq(@indi8)
+        expect(@list.push_elemento(@indi9)).to eq(@indi9)
+        expect(@list.push_elemento(@indi10)).to eq(@indi10)
+      end
+      
+      it "La lista ya no es vacía" do
+        expect(@list.empty?).to eq(false)
+      end
+    end
+    context "Expectativas generales para el array." do
       
     end
   end
 end
+
