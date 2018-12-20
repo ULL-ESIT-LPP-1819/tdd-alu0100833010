@@ -369,14 +369,14 @@ RSpec.describe Individuo::Individuo do
       it "Existe un método para insertar elementos" do
         expect(@list.push_elemento(@indi1)).to eq(@indi1)
         expect(@list.push_elemento(@indi2)).to eq(@indi2)
-        #expect(@list.push_elemento(@indi3)).to eq(@indi3)
-        #expect(@list.push_elemento(@indi4)).to eq(@indi4)
-        #expect(@list.push_elemento(@indi5)).to eq(@indi5)
-        #expect(@list.push_elemento(@indi6)).to eq(@indi6)
-        #expect(@list.push_elemento(@indi7)).to eq(@indi7)
-        #expect(@list.push_elemento(@indi8)).to eq(@indi8)
-        #expect(@list.push_elemento(@indi9)).to eq(@indi9)
-        #expect(@list.push_elemento(@indi10)).to eq(@indi10)
+        expect(@list.push_elemento(@indi3)).to eq(@indi3)
+        expect(@list.push_elemento(@indi4)).to eq(@indi4)
+        expect(@list.push_elemento(@indi5)).to eq(@indi5)
+        expect(@list.push_elemento(@indi6)).to eq(@indi6)
+        expect(@list.push_elemento(@indi7)).to eq(@indi7)
+        expect(@list.push_elemento(@indi8)).to eq(@indi8)
+        expect(@list.push_elemento(@indi9)).to eq(@indi9)
+        expect(@list.push_elemento(@indi10)).to eq(@indi10)
       end
       
       it "La lista ya no es vacía" do
@@ -399,9 +399,16 @@ RSpec.describe Individuo::Individuo do
     end
     context "Métodos para ordenar el array y la lista." do
       it "Existe un método para ordenar el array y la lista mediante sort." do
-        #expect(@array.sort_for).to eq([@menu_dietetico8, @menu_dietetico5, @menu_dietetico10, @menu_dietetico4, @menu_dietetico3, @menu_dietetico9, @menu_dietetico1, @menu_dietetico6, @menu_dietetico7, @menu_dietetico2])
         expect(@array.sort).to eq([@menu_dietetico8, @menu_dietetico5, @menu_dietetico10, @menu_dietetico4, @menu_dietetico3, @menu_dietetico9, @menu_dietetico1, @menu_dietetico6, @menu_dietetico7, @menu_dietetico2])
-        expect(@list.sort).to eq([@indi1, @indi2])
+        expect(@list.sort).to eq([@indi6, @indi1, @indi10, @indi5, @indi4, @indi9, @indi7, @indi8, @indi2, @indi3])
+      end
+      it "Existe un método para ordenar el array y la lista mediante for." do
+        expect(@array.sort_for).to eq([@menu_dietetico8, @menu_dietetico5, @menu_dietetico10, @menu_dietetico4, @menu_dietetico3, @menu_dietetico9, @menu_dietetico1, @menu_dietetico6, @menu_dietetico7, @menu_dietetico2])
+        expect(@list.sort_for).to eq([@indi6, @indi1, @indi10, @indi5, @indi4, @indi9, @indi7, @indi8, @indi2, @indi3])
+      end
+      it "Existe un método para ordenar el array y la lista mediante each." do
+        expect(@array.sort_each).to eq([@menu_dietetico8, @menu_dietetico5, @menu_dietetico10, @menu_dietetico4, @menu_dietetico3, @menu_dietetico9, @menu_dietetico1, @menu_dietetico6, @menu_dietetico7, @menu_dietetico2])
+        expect(@list.sort_each).to eq([@indi6, @indi1, @indi10, @indi5, @indi4, @indi9, @indi7, @indi8, @indi2, @indi3])
       end
     end
   end
