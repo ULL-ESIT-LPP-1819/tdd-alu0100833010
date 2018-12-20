@@ -64,26 +64,26 @@ RSpec.describe Individuo::Individuo do
          expect(@individuo1.to_s).to eq("[Peso=#{@individuo1.peso}, Talla=#{@individuo1.talla}, IMC=#{@individuo1.imc}, %MC=#{@individuo1.masa}, RCC=#{@individuo1.rcc}, Pliegues=#{@individuo1.tricipital},#{@individuo1.bicipital},#{@individuo1.subescapular},#{@individuo1.suprailiaco}]:")  
       end
     end
-
-     context "Módulo Comparable" do
+    # Cambiado por práctica 11. Ya no es edad, ahora es gasto energético total.
+    context "Módulo Comparable" do
       it "Pruebas para comparar la valoración nutricional entre dos individuos" do
-        expect(@individuo7 < @individuo1).to be(true)
-        expect(@individuo1 < @individuo7).to be(false)
+        expect(@individuo7 < @individuo1).to be(false)
+        expect(@individuo1 < @individuo7).to be(true)
 
-        expect(@individuo7 > @individuo8).to be(false)
-        expect(@individuo8 > @individuo7).to be(true)
+        expect(@individuo7 > @individuo8).to be(true)
+        expect(@individuo8 > @individuo7).to be(false)
 
-        expect(@individuo1 == @individuo8).to be(true)
+        expect(@individuo1 == @individuo1).to be(true) 
         expect(@individuo1 == @individuo7).to be(false)
 
-        expect(@individuo7 <= @individuo1).to be(true)
-        expect(@individuo1 <= @individuo7).to be(false)
+        expect(@individuo7 <= @individuo1).to be(false)
+        expect(@individuo1 <= @individuo7).to be(true)
 
-        expect(@individuo7 >= @individuo8).to be(false)
-        expect(@individuo8 >= @individuo7).to be(true)
+        expect(@individuo7 >= @individuo8).to be(true)
+        expect(@individuo8 >= @individuo7).to be(false)
       end
     end
-      
+    # ------------------------------------------------------------------------. 
     context "Pruebas para comprobar la clase de un objeto, el tipo de un objeto y su pertenecia a una jerarquı́a" do
       it "Existe un método para comprobar el tipo de objeto" do
         expect(@individuo1.instance_of? Individuo::Paciente).to eq(true)
@@ -239,6 +239,7 @@ RSpec.describe Individuo::Individuo do
       end
     end
 
+    # Cambiado por práctica 11. Ya no es edad, ahora es gasto energético total.
     context "Módulo Enumerable" do
       it "Existe una lista vacía" do
         expect(@lista.empty?).to eq(true)
@@ -254,15 +255,16 @@ RSpec.describe Individuo::Individuo do
         expect(@lista.select { |i| i.edad.round % 2 == 0 }).to eq([])
       end
       it "Función Sort" do
-        expect(@lista.sort).to eq([@individuo6,@individuo2,@individuo4])
+        expect(@lista.sort).to eq([@individuo2,@individuo6,@individuo4])
       end
       it "Función Min" do
-        expect(@lista.min).to eq(@individuo6)
+        expect(@lista.min).to eq(@individuo2)
       end
       it "Función Max" do
         expect(@lista.max).to eq(@individuo4)
       end
     end
+    # -------------------------------------------------------------------------.
     context "Pruebas para comprobar la clase de un objeto, el tipo de un objeto y su pertenecia a una jerarquı́a" do
       it "Existe un método para comprobar el tipo de objeto" do
         expect(@lista.instance_of? Lista::Lista).to eq(true)
@@ -367,14 +369,14 @@ RSpec.describe Individuo::Individuo do
       it "Existe un método para insertar elementos" do
         expect(@list.push_elemento(@indi1)).to eq(@indi1)
         expect(@list.push_elemento(@indi2)).to eq(@indi2)
-        expect(@list.push_elemento(@indi3)).to eq(@indi3)
-        expect(@list.push_elemento(@indi4)).to eq(@indi4)
-        expect(@list.push_elemento(@indi5)).to eq(@indi5)
-        expect(@list.push_elemento(@indi6)).to eq(@indi6)
-        expect(@list.push_elemento(@indi7)).to eq(@indi7)
-        expect(@list.push_elemento(@indi8)).to eq(@indi8)
-        expect(@list.push_elemento(@indi9)).to eq(@indi9)
-        expect(@list.push_elemento(@indi10)).to eq(@indi10)
+        #expect(@list.push_elemento(@indi3)).to eq(@indi3)
+        #expect(@list.push_elemento(@indi4)).to eq(@indi4)
+        #expect(@list.push_elemento(@indi5)).to eq(@indi5)
+        #expect(@list.push_elemento(@indi6)).to eq(@indi6)
+        #expect(@list.push_elemento(@indi7)).to eq(@indi7)
+        #expect(@list.push_elemento(@indi8)).to eq(@indi8)
+        #expect(@list.push_elemento(@indi9)).to eq(@indi9)
+        #expect(@list.push_elemento(@indi10)).to eq(@indi10)
       end
       
       it "La lista ya no es vacía" do
@@ -393,6 +395,13 @@ RSpec.describe Individuo::Individuo do
         expect(@array[7]).to eq(@menu_dietetico8)
         expect(@array[8]).to eq(@menu_dietetico9)
         expect(@array[9]).to eq(@menu_dietetico10)
+      end
+    end
+    context "Métodos para ordenar el array y la lista." do
+      it "Existe un método para ordenar el array y la lista mediante sort." do
+        #expect(@array.sort_for).to eq([@menu_dietetico8, @menu_dietetico5, @menu_dietetico10, @menu_dietetico4, @menu_dietetico3, @menu_dietetico9, @menu_dietetico1, @menu_dietetico6, @menu_dietetico7, @menu_dietetico2])
+        expect(@array.sort).to eq([@menu_dietetico8, @menu_dietetico5, @menu_dietetico10, @menu_dietetico4, @menu_dietetico3, @menu_dietetico9, @menu_dietetico1, @menu_dietetico6, @menu_dietetico7, @menu_dietetico2])
+        expect(@list.sort).to eq([@indi1, @indi2])
       end
     end
   end

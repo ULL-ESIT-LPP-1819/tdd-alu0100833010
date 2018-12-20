@@ -27,10 +27,10 @@ module Individuo
     end
     
     # Método para el correcto funcionamiento del módulo comparable.
-    def <=>(other)
-      return nil unless other.kind_of? Individuo
-      @edad <=> other.edad
-    end
+    #def <=>(other)
+    #  return nil unless other.kind_of? Individuo
+    #  @edad <=> other.edad
+    #end
   end
 
   # Clase Paciente que hereda de Individuo
@@ -122,6 +122,12 @@ module Individuo
     # Método para mostrar el flujo de salida formateado.
     def to_s
       "[Peso=#{@peso}, Talla=#{@talla}, IMC=#{imc}, %MC=#{masa}, RCC=#{rcc}, Pliegues=#{tricipital},#{bicipital},#{subescapular},#{suprailiaco}]:"
+    end
+
+    # Método para el correcto funcionamiento del módulo comparable.
+    def <=>(other)
+      return nil unless other.kind_of? Paciente
+      gasto_energetico_total <=> other.gasto_energetico_total
     end
   end
 end
