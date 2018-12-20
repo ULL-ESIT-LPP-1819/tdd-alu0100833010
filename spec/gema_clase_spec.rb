@@ -382,7 +382,18 @@ RSpec.describe Individuo::Individuo do
       end
     end
     context "Expectativas generales para el array." do
-      
+      it "Existe un array NO vacío" do
+        expect(@array[0]).to eq(@menu_dietetico1)
+        expect(@array[1]).to eq(@menu_dietetico2)
+        expect(@array[2]).to eq(@menu_dietetico3)
+        expect(@array[3]).to eq(@menu_dietetico4)
+        expect(@array[4]).to eq(@menu_dietetico5)
+        expect(@array[5]).to eq(@menu_dietetico6)
+        expect(@array[6]).to eq(@menu_dietetico7)
+        expect(@array[7]).to eq(@menu_dietetico8)
+        expect(@array[8]).to eq(@menu_dietetico9)
+        expect(@array[9]).to eq(@menu_dietetico10)
+      end
     end
   end
 end
