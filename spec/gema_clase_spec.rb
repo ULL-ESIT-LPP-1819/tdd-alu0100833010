@@ -1,4 +1,5 @@
 require "spec_helper"
+require 'benchmark'
 
 RSpec.describe Individuo::Individuo do
   before :each do
@@ -408,7 +409,19 @@ RSpec.describe Individuo::Individuo do
       end
       it "Existe un método para ordenar el array y la lista mediante each." do
         expect(@array.sort_each).to eq([@menu_dietetico8, @menu_dietetico5, @menu_dietetico10, @menu_dietetico4, @menu_dietetico3, @menu_dietetico9, @menu_dietetico1, @menu_dietetico6, @menu_dietetico7, @menu_dietetico2])
-        expect(@list.sort_each).to eq([@indi6, @indi1, @indi10, @indi5, @indi4, @indi9, @indi7, @indi8, @indi2, @indi3])
+        #expect(@list.sort_each).to eq([@indi6, @indi1, @indi10, @indi5, @indi4, @indi9, @indi7, @indi8, @indi2, @indi3])
+      end
+      it "Benchmark" do
+        n = 1500
+        Benchmark.bm do |x|
+          x.report("for:") {  n.times{@array.sort_for} }
+          x.report("each:") {  n.times{@array.sort_each} }
+          x.report("sort:") {  n.times{@array.sort} }
+
+          x.report("for:") {  n.times{@list.sort_for} }
+          x.report("each:") {  n.times{@list.sort_each} }
+          x.report("sort:") {  n.times{@list.sort} }
+        end
       end
     end
   end
