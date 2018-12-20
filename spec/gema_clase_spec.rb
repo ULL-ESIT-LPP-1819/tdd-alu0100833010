@@ -313,4 +313,25 @@ RSpec.describe Individuo::Individuo do
       end
     end
   end
+  describe Etiqueta::Etiqueta do
+    before :all do
+      @lata_de_atun = Etiqueta::Etiqueta.new("Lata de atún", 23.0, 2.7, 0.5, 0.5, 20.0, 0.40, [0])
+      @cereales = Etiqueta::Etiqueta.new("Cereales", 0.8, 0.2, 82.0, 7.0, 8.0, 1.6, [0.24])
+      @chocolatina = Etiqueta::Etiqueta.new("Chocolatina", 23.0, 2.1, 81.1, 6.0, 9.0, 1.2, [0])
+      @lentejas = Etiqueta::Etiqueta.new("Lentejas", 23.5, 52.0, 1.4, 0, 2.0, 0.2, [0])
+      @tomate_frito = Etiqueta::Etiqueta.new("Tomate frito", 1.0, 3.5, 0.2, 3.0, 3.4, 4.7, [0])
+      @aceite = Etiqueta::Etiqueta.new("Aceite", 0.0, 0.2, 90.1, 3.4, 5.2, 1.5, [0])
+      @leche = Etiqueta::Etiqueta.new("Leche", 3.3, 4.8, 3.2, 0.0, 1.0, 4.3, [0])
+      @menu_dietetico1 = [@lata_de_atun, @tomate_frito]
+      @menu_dietetico2 = [@cereales, @chocolatina, @leche]
+      @menu_dietetico3 = [@lentejas, @aceite]
+      @menu_dietetico4 = [@lentejas, @tomate_frito, @lata_de_atun]
+      @menu_dietetico5 = [@leche, @lentejas, @chocolatina]
+      @menu_dietetico6 = [@lata_de_atun, @cereales]
+      @menu_dietetico7 = [@cereales, @aceite, @leche]
+      @menu_dietetico8 = [@tomate_frito, @aceite]
+      @menu_dietetico9 = [@lentejas, @chocolatina, @lata_de_atun]
+      @menu_dietetico10 = [@leche, @chocolatina]
+    end
+  end
 end
